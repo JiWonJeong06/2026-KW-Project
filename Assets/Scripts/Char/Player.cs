@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public float speed = 5f;
     public float bulletSpeed = 10f;
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     public int currentHealth;
     public float attackspeed = 0.8f;
     private float lastAttackTime = 0f;
@@ -25,10 +25,10 @@ public class Player : MonoBehaviour
         // 상하좌우 움직임
         Vector2 input = Vector2.zero;
 
-        if (Keyboard.current.wKey.isPressed)
-            input.y = 1;
         if (Keyboard.current.sKey.isPressed)
             input.y = -1;
+        if (Keyboard.current.wKey.isPressed)
+            input.y = 1;
         if (Keyboard.current.aKey.isPressed)
             input.x = -1;
         if (Keyboard.current.dKey.isPressed)
@@ -36,6 +36,10 @@ public class Player : MonoBehaviour
 
         Vector3 movement = new Vector3(input.x, input.y, 0.0f).normalized;
         transform.Translate(movement * speed * Time.deltaTime);
+
+        animator.SetFloat("MoveY", input.y);
+        animator.SetFloat("MoveX", input.x);
+        animator.SetFloat("Speed", input.sqrMagnitude);
 
         // 방향키 공격
         if (Keyboard.current.upArrowKey.wasPressedThisFrame)
