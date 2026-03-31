@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1518734207
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3867180265227247244, guid: 6fc689ae04c4ab5488dd128fc2cf5d13, type: 3}
@@ -107,6 +107,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   animator: {fileID: 4801530756871570619}
   bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
+  speed: 5
+  bulletSpeed: 10
+  maxHealth: 5
+  currentHealth: 0
+  attackspeed: 0.8
 --- !u!95 &4801530756871570619
 Animator:
   serializedVersion: 7

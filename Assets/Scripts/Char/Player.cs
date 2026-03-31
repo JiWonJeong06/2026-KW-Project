@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     public float speed = 5f;
     public float bulletSpeed = 10f;
-    public int maxHealth = 3;
+    public int maxHealth = 5;
     public int currentHealth;
     public float attackspeed = 0.8f;
     private float lastAttackTime = 0f;
