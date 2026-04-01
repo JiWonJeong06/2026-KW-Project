@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         // 상하좌우 움직임
         Vector2 input = Vector2.zero;
