@@ -5813,9 +5813,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d0cc33f76fb5724a9286f8503c07256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Pet
-  damage: 1
-  cooldown: 30
-  speed: 1
+  player: {fileID: 1240808820}
+  followSpeed: 3
+  followDistance: 1.5
+  homingBulletPrefab: {fileID: 8681704943041842000, guid: 792ad9f783293d340a4d16f2faec5d1f, type: 3}
+  attackInterval: 1
 --- !u!1 &2081729789
 GameObject:
   m_ObjectHideFlags: 0
