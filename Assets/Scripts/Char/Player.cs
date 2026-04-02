@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
     enum Anime { Idle, Forward, Backward, Left, Right, AttackUp, AttackDown, AttackLeft, AttackRight, Hit, Die }
 
     public Animator animator; 
-    public GameObject bulletPrefab;   // GameObject로 변경 (중요)
-
+    public GameObject bulletPrefab;   // GameObject로 변경 (중요)   
+    public float damage = 1f;
+    public float attackRange = 1f;
     public float speed = 5f;
     public float bulletSpeed = 10f;
     public int maxHealth = 5;
