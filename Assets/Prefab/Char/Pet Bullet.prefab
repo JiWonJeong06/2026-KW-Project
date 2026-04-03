@@ -171,3 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HomingBullet
   target: {fileID: 0}
   speed: 5
+  damage: 1
+  explosionSize: {x: 2, y: 2}
+  explosionEffectPrefab: {fileID: 9172074032008000862, guid: b252f218ea3370f40810d69d24e3c41f, type: 3}
+  effectDuration: 0.3
