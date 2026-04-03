@@ -38,7 +38,7 @@ public class HomingBullet : MonoBehaviour
             }
         }
 
-        // 🔥 범위 시각화 생성
+        //  범위 시각화 생성
         if (explosionEffectPrefab != null)
         {
             GameObject effect = Instantiate(
