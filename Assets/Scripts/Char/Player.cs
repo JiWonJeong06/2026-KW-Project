@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     //플레이어 능력치, 이동속도, 최대체력, 현재체력
     public float speed;
     public int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
 
     void Awake()
     {

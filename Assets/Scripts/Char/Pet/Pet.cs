@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using UnityEngine;
 
 public class Pet : MonoBehaviour
@@ -36,6 +37,7 @@ public class Pet : MonoBehaviour
     void AttackTimer()
     {
         timer += Time.deltaTime;
+       
 
         if (timer >= attackInterval)
         {

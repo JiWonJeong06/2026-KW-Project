@@ -6,7 +6,10 @@ public class HomingBullet : MonoBehaviour
     public float speed = 5f;
     public float damage = 1f;
 
-    void Update()
+    public Vector2 explosionSize = new Vector2(2f, 2f); // 2x2 범위
+    public GameObject explosionEffectPrefab;
+    public float effectDuration = 0.3f;
+    void FixedUpdate()
     {
         if (target == null)
         {
@@ -19,16 +22,35 @@ public class HomingBullet : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision)
+{
+    if (collision.CompareTag("Enemy"))
     {
-        if (collision.CompareTag("Enemy"))
+        Vector2 center = transform.position;
+
+        Collider2D[] hits = Physics2D.OverlapBoxAll(center, explosionSize, 0f);
+
+        foreach (var hit in hits)
         {
-            Enemy enemy = collision.GetComponent<Enemy>();
+            Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy != null)
             {
                 enemy.TakeDamage(damage);
             }
-
-            Destroy(gameObject);
         }
+
+        //  범위 시각화 생성
+        if (explosionEffectPrefab != null)
+        {
+            GameObject effect = Instantiate(
+                explosionEffectPrefab,
+                transform.position,
+                Quaternion.identity
+            );
+
+            Destroy(effect, effectDuration);
+        }
+
+        Destroy(gameObject);
     }
+}
 }

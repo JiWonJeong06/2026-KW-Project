@@ -9,7 +9,7 @@ public class Weapon : MonoBehaviour
 
     float nextFireTime;
 
-    void Update()
+    void  FixedUpdate()
     {
         Vector2 dir = Vector2.zero;
 
