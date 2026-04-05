@@ -18,11 +18,15 @@ public class HomingBullet : MonoBehaviour
         }
 
         Vector3 dir = (target.position - transform.position).normalized;
-        transform.position += dir * speed * Time.deltaTime;
+        transform.position += dir * speed * Time.fixedDeltaTime;
     }
 
     void OnTriggerEnter2D(Collider2D collision)
-{
+{   
+    if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
+        {
+            Destroy(gameObject);
+        }
     if (collision.CompareTag("Enemy"))
     {
         Vector2 center = transform.position;

@@ -11,12 +11,11 @@ public class Pet : MonoBehaviour
 
     float timer;
 
-    void Update()
+    void FixedUpdate()
     {
         FollowPlayer();
         AttackTimer();
     }
-
     void FollowPlayer()
     {
         if (player == null) return;
@@ -29,14 +28,14 @@ public class Pet : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 targetPos,
-                followSpeed * Time.deltaTime
+                followSpeed * Time.fixedDeltaTime
             );
         }
     }
 
     void AttackTimer()
     {
-        timer += Time.deltaTime;
+        timer += Time.fixedDeltaTime;
        
 
         if (timer >= attackInterval)
