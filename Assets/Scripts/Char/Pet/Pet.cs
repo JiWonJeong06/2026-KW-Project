@@ -16,7 +16,6 @@ public class Pet : MonoBehaviour
         FollowPlayer();
         AttackTimer();
     }
-
     void FollowPlayer()
     {
         if (player == null) return;
