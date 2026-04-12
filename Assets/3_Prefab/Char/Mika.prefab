@@ -220,6 +220,10 @@ MonoBehaviour:
   speed: 3
   maxHealth: 5
   currentHealth: 0
+  interactRadius: 0.75
+  interactLayer:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!95 &4843800812009382640
 Animator:
   serializedVersion: 7

@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 1458984776465971153}
   - component: {fileID: 5610659157087567368}
   - component: {fileID: 3709998021278207882}
-  - component: {fileID: 4282616224901552429}
   m_Layer: 8
-  m_Name: Door
+  m_Name: RED-Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -263,29 +262,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &4282616224901552429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2568004865102142206}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  doorColor: 0
-  doorTier: 0
-  isOpen: 0
-  doorTilemap: {fileID: 4156068536934386481}
-  doorTilePosition: {x: 0, y: 0, z: 0}
-  tier1ClosedTile: {fileID: 0}
-  tier2ClosedTile: {fileID: 0}
-  tier3ClosedTile: {fileID: 0}
-  tier1OpenTile: {fileID: 0}
-  tier2OpenTile: {fileID: 0}
-  tier3OpenTile: {fileID: 0}
 --- !u!1 &2732560147299324639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,6 +1318,61 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
+--- !u!1 &2823593776416140694
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4322295504470310702}
+  - component: {fileID: 2119382028055272440}
+  m_Layer: 0
+  m_Name: DoorController-Blue
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4322295504470310702
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823593776416140694}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8322685993848038393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2119382028055272440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823593776416140694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
+  doorColor: 1
+  doorTier: 0
+  isOpen: 0
+  doorTilemap: {fileID: 462972191500608508}
+  doorTilePosition: {x: 0, y: 0, z: 0}
+  tier1ClosedTile: {fileID: 0}
+  tier2ClosedTile: {fileID: 0}
+  tier3ClosedTile: {fileID: 0}
+  tier1OpenTile: {fileID: 0}
+  tier2OpenTile: {fileID: 0}
+  tier3OpenTile: {fileID: 0}
 --- !u!1 &3631417770413774956
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1410,9 @@ Transform:
   - {fileID: 5628252771806354783}
   - {fileID: 8744551745771146118}
   - {fileID: 2500585516568745135}
+  - {fileID: 139924811646123412}
+  - {fileID: 4322295504470310702}
+  - {fileID: 8277866844681961399}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!156049354 &8758270302367472010
@@ -3582,6 +3616,61 @@ TilemapRenderer:
   m_SortOrder: 0
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
+--- !u!1 &4535743927783071433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 139924811646123412}
+  - component: {fileID: 622514130527597543}
+  m_Layer: 0
+  m_Name: DoorController-Red
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &139924811646123412
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535743927783071433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8322685993848038393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &622514130527597543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4535743927783071433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DoorController
+  doorColor: 0
+  doorTier: 0
+  isOpen: 0
+  doorTilemap: {fileID: 4156068536934386481}
+  doorTilePosition: {x: 0, y: 0, z: 0}
+  tier1ClosedTile: {fileID: 0}
+  tier2ClosedTile: {fileID: 0}
+  tier3ClosedTile: {fileID: 0}
+  tier1OpenTile: {fileID: 0}
+  tier2OpenTile: {fileID: 0}
+  tier3OpenTile: {fileID: 0}
 --- !u!1 &6686655855300419415
 GameObject:
   m_ObjectHideFlags: 0
@@ -3595,9 +3684,8 @@ GameObject:
   - component: {fileID: 8724219974945333305}
   - component: {fileID: 337696346121493738}
   - component: {fileID: 8470348354318742807}
-  - component: {fileID: 374456484877917965}
   m_Layer: 8
-  m_Name: Door
+  m_Name: Yellow-Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3845,19 +3933,51 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &374456484877917965
+--- !u!1 &6756997922301157997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8277866844681961399}
+  - component: {fileID: 6562484072368841527}
+  m_Layer: 0
+  m_Name: DoorController-Yellow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8277866844681961399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756997922301157997}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8322685993848038393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6562484072368841527
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6686655855300419415}
+  m_GameObject: {fileID: 6756997922301157997}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  doorColor: 0
+  doorColor: 2
   doorTier: 0
   isOpen: 0
   doorTilemap: {fileID: 6298481274884920260}
@@ -3881,9 +4001,8 @@ GameObject:
   - component: {fileID: 8766348295583604188}
   - component: {fileID: 7920736199886623445}
   - component: {fileID: 4245100671136398324}
-  - component: {fileID: 3309620381408511427}
   m_Layer: 8
-  m_Name: Door
+  m_Name: BLUE-Door
   m_TagString: Door
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4131,29 +4250,6 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0
   m_UseDelaunayMesh: 0
---- !u!114 &3309620381408511427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7287284256735608823}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  doorColor: 0
-  doorTier: 0
-  isOpen: 0
-  doorTilemap: {fileID: 462972191500608508}
-  doorTilePosition: {x: 0, y: 0, z: 0}
-  tier1ClosedTile: {fileID: 0}
-  tier2ClosedTile: {fileID: 0}
-  tier3ClosedTile: {fileID: 0}
-  tier1OpenTile: {fileID: 0}
-  tier2OpenTile: {fileID: 0}
-  tier3OpenTile: {fileID: 0}
 --- !u!1 &7948165090116140878
 GameObject:
   m_ObjectHideFlags: 0
