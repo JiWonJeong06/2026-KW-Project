@@ -303,9 +303,9 @@ MonoBehaviour:
   height: 10
   tileSize: 1
   enemyText: {fileID: 1844745392}
-  redDoor: {fileID: 329334834}
-  blueDoor: {fileID: 329334834}
-  yellowDoor: {fileID: 329334834}
+  redDoor: {fileID: 0}
+  blueDoor: {fileID: 0}
+  yellowDoor: {fileID: 0}
 --- !u!4 &205430233
 Transform:
   m_ObjectHideFlags: 0
@@ -427,61 +427,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320820685}
   m_CullTransparentMesh: 1
---- !u!1 &329334832
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 329334833}
-  - component: {fileID: 329334834}
-  m_Layer: 0
-  m_Name: DoorController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &329334833
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329334832}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &329334834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 329334832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed79ce4e18f050544bf1ed3dae20621b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DoorController
-  doorColor: 0
-  doorTier: 1
-  isOpen: 0
-  doorTilemap: {fileID: 0}
-  doorTilePosition: {x: 0, y: 0, z: 0}
-  tier1ClosedTile: {fileID: 0}
-  tier2ClosedTile: {fileID: 0}
-  tier3ClosedTile: {fileID: 0}
-  tier1OpenTile: {fileID: 0}
-  tier2OpenTile: {fileID: 0}
-  tier3OpenTile: {fileID: 0}
 --- !u!1 &570987825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,37 +1109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637858b00d22512498f38cbd289d6587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
---- !u!1 &1337518095
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1337518096}
-  m_Layer: 0
-  m_Name: Controller===============
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1337518096
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1337518095}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1569493227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1733,5 +1647,3 @@ SceneRoots:
   - {fileID: 205430233}
   - {fileID: 1868390552}
   - {fileID: 1222513852}
-  - {fileID: 1337518096}
-  - {fileID: 329334833}
