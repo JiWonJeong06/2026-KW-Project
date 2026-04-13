@@ -5,21 +5,19 @@ public class Player : MonoBehaviour
 {
     [Header("Move")]
     public Animator animator;
-    public float speed = 5f;
+    public float speed;
 
     [Header("Health")]
-    public float maxHealth = 10f;
+    public float maxHealth;
     public float currentHealth;
 
     [Header("Interaction")]
-    public float interactRadius = 1.5f;
+    public float interactRadius;
     public LayerMask interactLayer;
 
     private Rigidbody2D rb;
     private Vector2 input;
     private Vector2 lookDirection = Vector2.down;
-
-    private NPC currentTargetNpc;
 
     void Awake()
     {
@@ -34,7 +32,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         InputMove();
-        UpdateInteractionTarget();
 
         if (Keyboard.current.eKey != null && Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -77,45 +74,39 @@ public class Player : MonoBehaviour
         animator.SetBool("isWalk", input != Vector2.zero);
     }
 
-    void UpdateInteractionTarget()
+    void Interact()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(rb.position, interactRadius, interactLayer);
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            rb.position,
+            interactRadius,
+            interactLayer
+        );
 
-        NPC nearestNpc = null;
+        if (hits.Length == 0)
+            return;
+
+        Collider2D nearest = null;
         float nearestDistance = float.MaxValue;
 
         for (int i = 0; i < hits.Length; i++)
         {
-            NPC npc = hits[i].GetComponent<NPC>();
-            if (npc == null)
-                continue;
-
-            float distance = Vector2.Distance(rb.position, hits[i].transform.position);
+            float distance = Vector2.Distance(rb.position, hits[i].ClosestPoint(rb.position));
 
             if (distance < nearestDistance)
             {
                 nearestDistance = distance;
-                nearestNpc = npc;
+                nearest = hits[i];
             }
         }
 
-        if (currentTargetNpc != nearestNpc)
+        if (nearest == null)
+            return;
+
+        OpenedDoor openedDoor = nearest.GetComponentInParent<OpenedDoor>();
+
+        if (openedDoor != null)
         {
-            if (currentTargetNpc != null)
-                currentTargetNpc.SetHighlight(false);
-
-            currentTargetNpc = nearestNpc;
-
-            if (currentTargetNpc != null)
-                currentTargetNpc.SetHighlight(true);
-        }
-    }
-
-    void Interact()
-    {
-        if (currentTargetNpc != null)
-        {
-            currentTargetNpc.Interact();
+            openedDoor.Interact();
         }
     }
 
