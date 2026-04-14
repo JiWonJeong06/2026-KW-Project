@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 6760438309315664452}
   - component: {fileID: 4843800812009382640}
   - component: {fileID: 1739772671692595900}
-  - component: {fileID: 8074002602033669253}
+  - component: {fileID: 5144982959113091078}
   m_Layer: 6
   m_Name: Mycka
   m_TagString: Player
@@ -382,8 +382,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8074002602033669253
-BoxCollider2D:
+--- !u!70 &5144982959113091078
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -398,7 +398,7 @@ BoxCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -416,18 +416,9 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.00088094175, y: -0.030831724}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 0.4274107, y: 0.8502459}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.00125736, y: -0.042598367}
+  m_Size: {x: 0.4684679, y: 0.8466897}
+  m_Direction: 0
 --- !u!1 &6207996230641607664
 GameObject:
   m_ObjectHideFlags: 0

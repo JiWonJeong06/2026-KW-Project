@@ -2,15 +2,20 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    public GameObject playerPrefab;
+    public Vector3 spawnPosition;
+    public Transform parentTransform;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        if (playerPrefab == null) return;
+
+        GameObject player = Instantiate(playerPrefab, spawnPosition, Quaternion.identity, parentTransform);
+
+        CameraFollow cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        if (cameraFollow != null)
+        {
+            cameraFollow.SetTarget(player.transform);
+        }
     }
 }
