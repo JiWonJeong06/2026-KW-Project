@@ -1,16 +1,21 @@
+using System;
 using UnityEngine;
 
-public class PlayerJson : MonoBehaviour
+// MYCKA_DataTable용
+[Serializable]
+public class PlayerData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public float Atk;
+    public float Atkspeed;
+    public float Bulletspeed;
+    public int addbullet;
+    public float hp;
+    public float range;
+    public float speed;
+    public float petatk;
+    public float petcd;
+    public float pethp;
+    public int petaddbullet;
+    public float bleed;
+    public int pierce;
 }

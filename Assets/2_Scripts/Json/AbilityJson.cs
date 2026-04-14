@@ -1,16 +1,16 @@
+using System;
 using UnityEngine;
 
-public class AbilityJson : MonoBehaviour
+[Serializable]
+public class AbilityData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public int Number;
+    public string Type;
+    public string Name;
+    public string Rank;
+    public string MainAblility;   // JSON 키와 동일하게 유지
+    public string SubAbility;
+    public float Increase;
+    public string Explanation;
+    public string Text;
 }

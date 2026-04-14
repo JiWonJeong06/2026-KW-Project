@@ -1,16 +1,15 @@
+using System;
 using UnityEngine;
 
-public class MobJson : MonoBehaviour
+[Serializable]
+public class MobData
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string Name;
+    public string Type;
+    public float atk;
+    public float atkspeed;
+    public float bulletspeed;
+    public float hp;
+    public float movespeed;
+    public float range;
 }
