@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float hp = 5f;
-    public float damage = 5f;
+    public float hp;
+    public float damage;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    public float attackRange = 10f;
-    public float fireRate = 1f;
+    public float attackRange;
+    public float fireRate;
 
     float fireTimer;
 
