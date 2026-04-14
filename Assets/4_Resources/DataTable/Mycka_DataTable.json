@@ -1,0 +1,17 @@
+[
+  {
+    "Atk": 1,
+    "Atkspeed": 0.75,
+    "Bulletspeed": 4.5,
+    "addbullet": 0,
+    "hp": 5,
+    "range": 3,
+    "speed": 3,
+    "petatk": 5,
+    "petcd": 20,
+    "pethp": 1,
+    "petaddbullet": 0,
+    "bleed": 0,
+    "pierce": 0
+  }
+]

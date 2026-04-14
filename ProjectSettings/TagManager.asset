@@ -21,8 +21,8 @@ TagManager:
   - PlayerBullet
   - EnemyBullet
   - Interactable
-  - 
-  - 
+  - Map
+  - UpgradeUI
   - 
   - 
   - 

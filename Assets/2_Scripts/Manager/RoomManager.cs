@@ -5,9 +5,9 @@ public class RoomManager : MonoBehaviour
 {
     [Header("Room Settings")]
     [SerializeField] private Vector2 center = Vector2.zero;
-    [SerializeField] private int width = 20;
-    [SerializeField] private int height = 10;
-    [SerializeField] private float tileSize = 1f;
+    [SerializeField] private int width;
+    [SerializeField] private int height;
+    [SerializeField] private float tileSize;
 
     [Header("UI")]
     [SerializeField] private TMP_Text enemyText;

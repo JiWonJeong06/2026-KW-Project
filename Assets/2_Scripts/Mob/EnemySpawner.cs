@@ -5,13 +5,13 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
     [SerializeField] private GameObject enemyPrefab;
-    [SerializeField] private int spawnCount = 10;
+    [SerializeField] private int spawnCount;
 
     [Header("Grid Settings")]
-    [SerializeField] private int width = 20;      // 가로 칸 수
-    [SerializeField] private int height = 10;     // 세로 칸 수
-    [SerializeField] private float tileSize = 1f; // 한 칸 크기
-    [SerializeField] private Vector2 center = Vector2.zero; // 그리드 중심
+    [SerializeField] private int width;  
+    [SerializeField] private int height;     
+    [SerializeField] private float tileSize; 
+    [SerializeField] private Vector2 center = Vector2.zero; 
 
     private void Start()
     {
