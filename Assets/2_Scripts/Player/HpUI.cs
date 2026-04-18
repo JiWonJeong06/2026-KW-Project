@@ -40,7 +40,7 @@ public class HpUI : MonoBehaviour
 
         hearts.Clear();
 
-        int heartCount = Mathf.RoundToInt(player.maxHealth);
+        int heartCount = Mathf.RoundToInt(player.hp);
 
         for (int i = 0; i < heartCount; i++)
         {
@@ -51,14 +51,14 @@ public class HpUI : MonoBehaviour
 
     void UpdateHearts()
     {
-        int needHeartCount = Mathf.RoundToInt(player.maxHealth);
+        int needHeartCount = Mathf.RoundToInt(player.hp);
 
         if (hearts.Count != needHeartCount)
         {
             CreateHearts();
         }
 
-        int currentHp = Mathf.RoundToInt(player.currentHealth);
+        int currentHp = Mathf.RoundToInt(player.currenthp);
 
         for (int i = 0; i < hearts.Count; i++)
         {

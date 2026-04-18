@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4034982638488782562}
   - component: {fileID: 6129859659000067788}
-  - component: {fileID: 2853396694827636266}
   m_Layer: 6
   m_Name: M-Weapon
   m_TagString: Player
@@ -92,21 +91,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &2853396694827636266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1008907886661984670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2045f70cde874c9ddd52268a797cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
-  fireRate: 0.75
-  bulletSpeed: 4.5
 --- !u!1 &2746485815266496039
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +101,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2602000174596469317}
   - component: {fileID: 4454457065842307698}
-  - component: {fileID: 95118084871665297}
   m_Layer: 6
   m_Name: Y-Weapon
   m_TagString: Player
@@ -199,21 +182,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &95118084871665297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2746485815266496039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2045f70cde874c9ddd52268a797cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
-  fireRate: 0.75
-  bulletSpeed: 4.5
 --- !u!1 &4340570371746144754
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,14 +293,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 637858b00d22512498f38cbd289d6587, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+  Name: 
   animator: {fileID: 4843800812009382640}
-  speed: 3
-  maxHealth: 5
-  currentHealth: 0
+  speed: 0
+  hp: 0
+  currenthp: 0
   interactRadius: 0.6
   interactLayer:
     serializedVersion: 2
     m_Bits: 2048
+  bleed: 0
+  pierce: 0
+  bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
+  Atkspeed: 0
+  Bulletspeed: 0
+  addbullet: 0
 --- !u!95 &4843800812009382640
 Animator:
   serializedVersion: 7
@@ -513,7 +488,6 @@ GameObject:
   m_Component:
   - component: {fileID: 268008858456748416}
   - component: {fileID: 5877490479891916418}
-  - component: {fileID: 4759595651224495671}
   m_Layer: 6
   m_Name: C-Weapon
   m_TagString: Player
@@ -595,18 +569,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &4759595651224495671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6467626098390133911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cd2045f70cde874c9ddd52268a797cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Weapon
-  bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
-  fireRate: 0.75
-  bulletSpeed: 4.5

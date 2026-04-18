@@ -3,12 +3,12 @@ using UnityEngine;
 public class HomingBullet : MonoBehaviour
 {
     public Transform target;
-    public float speed = 5f;
-    public float damage = 1f;
+    public float petbulletspeed;
+    public float petatk;
 
     public Vector2 explosionSize = new Vector2(2f, 2f); // 2x2 범위
     public GameObject explosionEffectPrefab;
-    public float effectDuration = 0.3f;
+    public float effectDuration;
     void FixedUpdate()
     {
         if (target == null)
@@ -18,9 +18,13 @@ public class HomingBullet : MonoBehaviour
         }
 
         Vector3 dir = (target.position - transform.position).normalized;
-        transform.position += dir * speed * Time.fixedDeltaTime;
+        transform.position += dir * petbulletspeed * Time.fixedDeltaTime;
     }
-
+public void ApplyBulletData(MyckaData data)
+    {
+        petatk = data.petatk;
+        petbulletspeed = data.petbulletspeed;
+    }
     void OnTriggerEnter2D(Collider2D collision)
 {   
     if (collision.CompareTag("Wall") || collision.CompareTag("Door"))
@@ -38,7 +42,7 @@ public class HomingBullet : MonoBehaviour
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.TakeDamage(damage);
+                enemy.TakeDamage(petatk);
             }
         }
 

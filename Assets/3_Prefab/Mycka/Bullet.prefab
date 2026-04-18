@@ -169,5 +169,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7aa284e1198d894eacf79056e8b5d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bullet
-  damage: 1
-  range: 3
+  Atk: 0
+  range: 0
