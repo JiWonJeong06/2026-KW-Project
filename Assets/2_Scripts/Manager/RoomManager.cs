@@ -47,9 +47,6 @@ public class RoomManager : MonoBehaviour
         blueDoor.Init(this, DoorColor.Blue, GetRandomTier());
         yellowDoor.Init(this, DoorColor.Yellow, GetRandomTier());
 
-        Debug.Log($"Red Door Tier: {redDoor.doorTier}");
-        Debug.Log($"Blue Door Tier: {blueDoor.doorTier}");
-        Debug.Log($"Yellow Door Tier: {yellowDoor.doorTier}");
     }
 
     DoorTier GetRandomTier()
