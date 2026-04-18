@@ -1,21 +1,38 @@
-using System.Diagnostics;
 using UnityEngine;
 
 public class Pet : MonoBehaviour
 {
+    [Header("Follow")]
     public Transform player;
-    public float followSpeed = 3f;
-    public float followDistance = 1.5f;
-    public GameObject homingBulletPrefab;
-    public float attackInterval = 30f;
+    public float followSpeed;
+    public float followDistance;
 
-    float timer;
+    [Header("Attack")]
+    public GameObject homingBulletPrefab;
+    public float petcd;
+    public float pethp;
+    public float petaddbullet;
+
+    private float timer;
 
     void FixedUpdate()
     {
         FollowPlayer();
         AttackTimer();
     }
+
+    public void ApplyPetData(MyckaData data)
+    {
+        petcd = data.petcd;
+        pethp = data.pethp;
+        petaddbullet = data.petaddbullet;
+    }
+
+    public void SetPlayer(Transform target)
+    {
+        player = target;
+    }
+
     void FollowPlayer()
     {
         if (player == null) return;
@@ -35,10 +52,11 @@ public class Pet : MonoBehaviour
 
     void AttackTimer()
     {
-        timer += Time.fixedDeltaTime;
-       
+        if (petcd <= 0f) return;
 
-        if (timer >= attackInterval)
+        timer += Time.fixedDeltaTime;
+
+        if (timer >= petcd)
         {
             timer = 0f;
             FireToNearestEnemy();
@@ -47,14 +65,15 @@ public class Pet : MonoBehaviour
 
     void FireToNearestEnemy()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        if (homingBulletPrefab == null) return;
 
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         if (enemies.Length == 0) return;
 
         GameObject nearest = null;
         float minDist = Mathf.Infinity;
 
-        foreach (var enemy in enemies)
+        foreach (GameObject enemy in enemies)
         {
             float dist = Vector3.Distance(transform.position, enemy.transform.position);
             if (dist < minDist)
@@ -72,7 +91,11 @@ public class Pet : MonoBehaviour
                 Quaternion.identity
             );
 
-            bullet.GetComponent<HomingBullet>().target = nearest.transform;
+            HomingBullet homingBullet = bullet.GetComponent<HomingBullet>();
+            if (homingBullet != null)
+            {
+                homingBullet.target = nearest.transform;
+            }
         }
     }
 }

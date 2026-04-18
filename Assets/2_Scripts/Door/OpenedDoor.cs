@@ -22,15 +22,12 @@ public class OpenedDoor : MonoBehaviour
     {
         Debug.Log($"{doorColor} 열린 문과 상호작용");
 
-        if (cardSpawner != null)
+        if (StageManager.Instance == null)
         {
-            cardSpawner.SpawnRandomCards(3);
-        }
-        else
-        {
-            Debug.LogWarning("CardSpawner를 찾지 못함");
+            Debug.LogWarning("StageManager.Instance가 없음");
+            return;
         }
 
- 
-}
+        StageManager.Instance.LoadNextRoom();
+    }
 }

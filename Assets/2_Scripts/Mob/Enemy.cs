@@ -4,16 +4,14 @@ public class Enemy : MonoBehaviour
 {
     public float hp;
     public float damage;
+    public float attackRange;
+    public float fireRate;
+    float fireTimer;
+    Transform player;
     public GameObject bulletPrefab;
     public Transform firePoint;
 
-    public float attackRange;
-    public float fireRate;
-
-    float fireTimer;
-
-    Transform player;
-
+    
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;

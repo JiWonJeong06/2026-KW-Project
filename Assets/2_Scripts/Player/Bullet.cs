@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float damage = 1f;
-    public float range = 1f;
+    public float Atk;
+    public float range;
 
     Rigidbody2D rb;
     Vector3 startPos;
@@ -11,6 +11,12 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
+    }
+    public void ApplyData(MyckaData data)
+    {
+        Atk = data.Atk;
+        range = data.range;
     }
 
     public void Init(Vector2 dir, float speed)
@@ -32,7 +38,7 @@ public class Bullet : MonoBehaviour
         var damageTarget = collision.GetComponent<Enemy>();
         if (damageTarget != null)
         {
-            damageTarget.TakeDamage(damage);
+            damageTarget.TakeDamage(Atk);
         }
 
         Destroy(gameObject);

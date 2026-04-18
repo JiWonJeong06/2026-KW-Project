@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private float tileSize;
 
     [Header("UI")]
-    [SerializeField] private TMP_Text enemyText;
+    //[SerializeField] private TMP_Text enemyText;
 
     [Header("Doors")]
     [SerializeField] private DoorController redDoor;
@@ -31,12 +31,12 @@ public class RoomManager : MonoBehaviour
 
         int enemyCount = CountEnemiesInRoom();
 
-        enemyText.text = "Enemy: " + enemyCount.ToString("D1");
+        // enemyText.text = "Enemy: " + enemyCount.ToString("D1");
 
         if (enemyCount == 0)
         {
             isCleared = true;
-            enemyText.text = "Clear!";
+            // enemyText.text = "Clear!";
             OpenAllDoors();
         }
     }

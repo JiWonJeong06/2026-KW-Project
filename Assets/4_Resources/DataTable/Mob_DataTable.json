@@ -32,11 +32,11 @@
   {
     "Name": "Boss1",
     "Type": "boss",
-    "atk": NaN,
-    "atkspeed": NaN,
-    "bulletspeed": NaN,
-    "hp": NaN,
-    "movespeed": NaN,
-    "range": NaN
+    "atk": "NaN",
+    "atkspeed": "NaN",
+    "bulletspeed": "NaN",
+    "hp": "NaN",
+    "movespeed": "NaN",
+    "range": "NaN"
   }
 ]

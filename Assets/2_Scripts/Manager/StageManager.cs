@@ -19,7 +19,34 @@ public class StageManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+    }
+
+    void Start()
+    {
+        FirstRoomSetup();
+    }
+
+    void FirstRoomSetup()
+    {
+        if (roomPrefabs == null || roomPrefabs.Length == 0)
+        {
+            Debug.LogWarning("Room Prefabs가 비어 있음");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, roomPrefabs.Length);
+        GameObject firstRoom = Instantiate(
+            roomPrefabs[randomIndex],
+            Vector3.zero,
+            Quaternion.identity,
+            roomParent
+        );
+
+        currentRoom = firstRoom;
+
+
     }
 
     public void SetCurrentRoom(GameObject room)
@@ -44,17 +71,14 @@ public class StageManager : MonoBehaviour
         }
 
         int randomIndex = Random.Range(0, roomPrefabs.Length);
-        GameObject nextRoom = Instantiate(roomPrefabs[randomIndex], spawnPosition, Quaternion.identity, roomParent);
+        GameObject nextRoom = Instantiate(
+            roomPrefabs[randomIndex],
+            spawnPosition,
+            Quaternion.identity,
+            roomParent
+        );
 
         currentRoom = nextRoom;
-
-        Player player = FindFirstObjectByType<Player>();
-        RoomManager roomManager = nextRoom.GetComponent<RoomManager>();
-
-        ///if (player != null && roomManager != null && roomManager.playerSpawnPoint != null)
-        //{
-          //  player.transform.position = roomManager.playerSpawnPoint.position;
-        //}
 
         Debug.Log("다음 방 생성 완료");
     }
