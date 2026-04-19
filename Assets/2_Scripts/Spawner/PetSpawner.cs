@@ -29,7 +29,8 @@ public class PetSpawner : MonoBehaviour
         GameObject petObj = Instantiate(
             petPrefab,
             spawnPoint.position,
-            spawnPoint.rotation
+            spawnPoint.rotation,
+            spawnPoint
         );
 
         Pet pet = petObj.GetComponent<Pet>();
