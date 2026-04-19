@@ -1,6 +1,6 @@
 public enum DoorColor
 {
-    Red,
-    Blue,
+    Magenta,
+    Cyan,
     Yellow
 }

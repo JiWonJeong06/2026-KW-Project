@@ -43,8 +43,8 @@ public class RoomManager : MonoBehaviour
 
     void SetupDoors()
     {
-        redDoor.Init(this, DoorColor.Red, GetRandomTier());
-        blueDoor.Init(this, DoorColor.Blue, GetRandomTier());
+        redDoor.Init(this, DoorColor.Magenta, GetRandomTier());
+        blueDoor.Init(this, DoorColor.Cyan, GetRandomTier());
         yellowDoor.Init(this, DoorColor.Yellow, GetRandomTier());
 
     }

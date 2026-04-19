@@ -7,7 +7,7 @@ public class MyckaDataLoader : MonoBehaviour
     [SerializeField] private Bullet bullet;
     [SerializeField] private Pet pet;
     [SerializeField] private HomingBullet homingBullet;
-    void Start()
+    void Awake()
     {
         MyckaData data = JsonUtility.FromJson<MyckaData>(jsonFile.text);
         player.ApplyData(data);
