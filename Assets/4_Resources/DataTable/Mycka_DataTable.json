@@ -11,7 +11,7 @@
   "speed": 3,
   "bleed": false,
   "pierce": false,
-  "petatk": 5,
+  "petatk": 1,
   "petcd": 20,
   "pethp": 1,
   "petaddbullet": 0,

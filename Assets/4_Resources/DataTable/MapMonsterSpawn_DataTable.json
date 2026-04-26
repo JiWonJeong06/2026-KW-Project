@@ -1,0 +1,640 @@
+{
+  "spawnTable": [
+    {
+      "code": 1001,
+      "color": "Cyan",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 1002,
+      "color": "Cyan",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 0,
+          "maxSpawn": 1
+        }
+      ]
+    },
+    {
+      "code": 1003,
+      "color": "Cyan",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        }
+      ]
+    },
+    {
+      "code": 1004,
+      "color": "Cyan",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        }
+      ]
+    },
+    {
+      "code": 1005,
+      "color": "Cyan",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 1006,
+      "color": "Cyan",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 1007,
+      "color": "Cyan",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 6
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        }
+      ]
+    },
+    {
+      "code": 1008,
+      "color": "Cyan",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 6
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        }
+      ]
+    },
+    {
+      "code": 1009,
+      "color": "Cyan",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        }
+      ]
+    },
+    {
+      "code": 2001,
+      "color": "Magenta",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 0,
+          "maxSpawn": 1
+        }
+      ]
+    },
+    {
+      "code": 2002,
+      "color": "Magenta",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        }
+      ]
+    },
+    {
+      "code": 2003,
+      "color": "Magenta",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1001,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 2004,
+      "color": "Magenta",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 2005,
+      "color": "Magenta",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 2,
+          "maxSpawn": 2
+        }
+      ]
+    },
+    {
+      "code": 2006,
+      "color": "Magenta",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 6
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        }
+      ]
+    },
+    {
+      "code": 2007,
+      "color": "Magenta",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 3,
+          "maxSpawn": 4
+        }
+      ]
+    },
+    {
+      "code": 3001,
+      "color": "Yellow",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 1,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        }
+      ]
+    },
+    {
+      "code": 3002,
+      "color": "Yellow",
+      "difficulty": "Easy",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        }
+      ]
+    },
+    {
+      "code": 3003,
+      "color": "Yellow",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 2
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        }
+      ]
+    },
+    {
+      "code": 3004,
+      "color": "Yellow",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 1,
+          "maxSpawn": 3
+        }
+      ]
+    },
+    {
+      "code": 3005,
+      "color": "Yellow",
+      "difficulty": "Normal",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1001,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 5
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        }
+      ]
+    },
+    {
+      "code": 3006,
+      "color": "Yellow",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 7
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        }
+      ]
+    },
+    {
+      "code": 3007,
+      "color": "Yellow",
+      "difficulty": "Hard",
+      "room": "Common",
+      "monsters": [
+        {
+          "monsterId": 1002,
+          "minSpawn": 6,
+          "maxSpawn": 9
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 8
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 4,
+          "maxSpawn": 6
+        }
+      ]
+    },
+    {
+      "code": 4001,
+      "color": "Cyan",
+      "difficulty": "Boss",
+      "room": "Boss",
+      "monsters": [
+        {
+          "monsterId": 9001,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        },
+        {
+          "monsterId": 1001,
+          "minSpawn": 2,
+          "maxSpawn": 3
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        }
+      ]
+    },
+    {
+      "code": 4002,
+      "color": "Magenta",
+      "difficulty": "Boss",
+      "room": "Boss",
+      "monsters": [
+        {
+          "monsterId": 9002,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 4,
+          "maxSpawn": 6
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 2,
+          "maxSpawn": 4
+        }
+      ]
+    },
+    {
+      "code": 4003,
+      "color": "Yellow",
+      "difficulty": "Boss",
+      "room": "Boss",
+      "monsters": [
+        {
+          "monsterId": 9003,
+          "minSpawn": 1,
+          "maxSpawn": 1
+        },
+        {
+          "monsterId": 1002,
+          "minSpawn": 5,
+          "maxSpawn": 8
+        },
+        {
+          "monsterId": 1003,
+          "minSpawn": 3,
+          "maxSpawn": 5
+        }
+      ]
+    }
+  ],
+  "monsterDefinitions": [
+    {
+      "monsterId": 1001,
+      "name": "고정형 원거리 적",
+      "key": "turret",
+      "description": "움직이지 않고 일정 범위 안의 플레이어를 향해 투사체를 발사"
+    },
+    {
+      "monsterId": 1002,
+      "name": "움직이는 원거리 적",
+      "key": "ranged",
+      "description": "플레이어를 추적하거나 거리를 조절하며 원거리 공격"
+    },
+    {
+      "monsterId": 1003,
+      "name": "자폭하는 적",
+      "key": "bomb",
+      "description": "플레이어에게 접근 후 자폭 공격"
+    },
+    {
+      "monsterId": 9001,
+      "name": "Cyan 보스",
+      "key": "cyan_boss",
+      "description": "기존 보스 행 유지를 위한 보스 ID"
+    },
+    {
+      "monsterId": 9002,
+      "name": "Magenta 보스",
+      "key": "magenta_boss",
+      "description": "기존 보스 행 유지를 위한 보스 ID"
+    },
+    {
+      "monsterId": 9003,
+      "name": "Yellow 보스",
+      "key": "yellow_boss",
+      "description": "기존 보스 행 유지를 위한 보스 ID"
+    }
+  ]
+}

@@ -3,40 +3,41 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    //이름
+    // 이름
     [Header("Name")]
     public string Name;
-    //애니메이션
-     [Header("Animation")]
+
+    // 애니메이션
+    [Header("Animation")]
     public Animator animator;
 
-    //이동
+    // 이동
     [Header("Move")]
     public float speed;
 
-    //체력
+    // 체력
     [Header("Health")]
     public float hp;
     public float currenthp;
-    
-    //상호작용
+
+    // 상호작용
     [Header("Interaction")]
     public float interactRadius;
     public LayerMask interactLayer;
-    
+    public GameObject interactPrompt;
+
     [Header("Special Effects")]
     public bool bleed = false;
     public bool pierce = false;
-    
-    //무기
+
+    // 무기
     [Header("Weapon")]
     public GameObject bulletPrefab;
     public float Atkspeed;
-    public float Bulletspeed ;
+    public float Bulletspeed;
     public float addbullet;
-    float nextFireTime;
 
-
+    private float nextFireTime;
 
     private Rigidbody2D rb;
     private Vector2 input;
@@ -46,9 +47,17 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
 
-        animator.SetFloat("MoveX", lookDirection.x);
-        animator.SetFloat("MoveY", lookDirection.y);
-        animator.SetBool("isWalk", false);
+        if (animator != null)
+        {
+            animator.SetFloat("MoveX", lookDirection.x);
+            animator.SetFloat("MoveY", lookDirection.y);
+            animator.SetBool("isWalk", false);
+        }
+
+        if (interactPrompt != null)
+        {
+            interactPrompt.SetActive(false);
+        }
     }
 
     void Start()
@@ -59,17 +68,19 @@ public class Player : MonoBehaviour
     void Update()
     {
         InputMove();
+        CheckInteractPrompt();
 
-        if (Keyboard.current.eKey != null && Keyboard.current.fKey.wasPressedThisFrame)
+        if (Keyboard.current.fKey.wasPressedThisFrame)
         {
             Interact();
         }
+
+        Shoot();
     }
 
     void FixedUpdate()
     {
         Move();
-        Shoot();
     }
 
     void InputMove()
@@ -91,41 +102,79 @@ public class Player : MonoBehaviour
         if (input != Vector2.zero)
         {
             lookDirection = input;
-            animator.SetFloat("MoveX", lookDirection.x);
-            animator.SetFloat("MoveY", lookDirection.y);
+
+            if (animator != null)
+            {
+                animator.SetFloat("MoveX", lookDirection.x);
+                animator.SetFloat("MoveY", lookDirection.y);
+            }
         }
-    }
-
-    void Shoot()
-    {
-             Vector2 dir = Vector2.zero;
-
-        if (Keyboard.current.rightArrowKey.isPressed)
-            dir.x += 1;
-        if (Keyboard.current.leftArrowKey.isPressed)
-            dir.x -= 1;
-        if (Keyboard.current.upArrowKey.isPressed)
-            dir.y += 1;
-        if (Keyboard.current.downArrowKey.isPressed)
-            dir.y -= 1;
-        if (dir.x != 0)
-            dir.y = 0;
-        if (dir != Vector2.zero && Time.time >= nextFireTime)
-        {
-            Fire(dir.normalized);
-            nextFireTime = Time.time + Atkspeed;
-        }  
-    }
-    void Fire(Vector2 dir)
-    {
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-        bullet.GetComponent<Bullet>().Init(dir, Bulletspeed);
     }
 
     void Move()
     {
         rb.MovePosition(rb.position + input * speed * Time.fixedDeltaTime);
-        animator.SetBool("isWalk", input != Vector2.zero);
+
+        if (animator != null)
+        {
+            animator.SetBool("isWalk", input != Vector2.zero);
+        }
+    }
+
+    void Shoot()
+    {
+        Vector2 dir = Vector2.zero;
+
+        if (Keyboard.current.rightArrowKey.isPressed)
+            dir.x += 1;
+        else if (Keyboard.current.leftArrowKey.isPressed)
+            dir.x -= 1;
+
+        if (Keyboard.current.upArrowKey.isPressed)
+            dir.y += 1;
+        else if (Keyboard.current.downArrowKey.isPressed)
+            dir.y -= 1;
+
+        // 대각선 발사 방지
+        if (dir.x != 0)
+            dir.y = 0;
+
+        if (dir != Vector2.zero && Time.time >= nextFireTime)
+        {
+            Fire(dir.normalized);
+            nextFireTime = Time.time + Atkspeed;
+        }
+    }
+
+    void Fire(Vector2 dir)
+    {
+        if (bulletPrefab == null)
+            return;
+
+        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+
+        Bullet bulletScript = bullet.GetComponent<Bullet>();
+
+        if (bulletScript != null)
+        {
+            bulletScript.Init(dir, Bulletspeed);
+        }
+    }
+
+    void CheckInteractPrompt()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(
+            rb.position,
+            interactRadius,
+            interactLayer
+        );
+
+        bool hasInteractTarget = hits.Length > 0;
+
+        if (interactPrompt != null)
+        {
+            interactPrompt.SetActive(hasInteractTarget);
+        }
     }
 
     void Interact()
@@ -144,7 +193,10 @@ public class Player : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            float distance = Vector2.Distance(rb.position, hits[i].ClosestPoint(rb.position));
+            float distance = Vector2.Distance(
+                rb.position,
+                hits[i].ClosestPoint(rb.position)
+            );
 
             if (distance < nearestDistance)
             {
@@ -163,6 +215,7 @@ public class Player : MonoBehaviour
             openedDoor.Interact();
         }
     }
+
     // 캐릭터 데이터 적용
     public void ApplyData(MyckaData data)
     {
@@ -170,8 +223,10 @@ public class Player : MonoBehaviour
         hp = data.hp;
         speed = data.speed;
         currenthp = hp;
+
         bleed = data.bleed;
         pierce = data.pierce;
+
         Atkspeed = data.Atkspeed;
         Bulletspeed = data.Bulletspeed;
         addbullet = data.addbullet;

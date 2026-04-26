@@ -1,3 +1,4 @@
+using System.Security;
 using UnityEngine;
 
 public class StageManager : MonoBehaviour
@@ -7,6 +8,8 @@ public class StageManager : MonoBehaviour
     [Header("Room Settings")]
     [SerializeField] private GameObject[] roomPrefabs;
     [SerializeField] private Transform roomParent;
+    [SerializeField] private Transform playerSpawn;
+    [SerializeField] private Player player;
 
     private GameObject currentRoom;
 
@@ -21,6 +24,7 @@ public class StageManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+        player = FindFirstObjectByType<Player>();
     }
 
     void Start()
@@ -79,6 +83,8 @@ public class StageManager : MonoBehaviour
         );
 
         currentRoom = nextRoom;
+
+        player.transform.position = playerSpawn.position;
 
         Debug.Log("다음 방 생성 완료");
     }
