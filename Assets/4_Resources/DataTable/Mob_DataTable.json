@@ -1,42 +1,37 @@
-[
-  {
-    "Name": "turret",
-    "Type": "normal",
-    "atk": 1.0,
-    "atkspeed": 2.0,
-    "bulletspeed": 3.0,
-    "hp": 8.0,
-    "movespeed": 0.0,
-    "range": 7.0
-  },
-  {
-    "Name": "ranged",
-    "Type": "normal",
-    "atk": 1.0,
-    "atkspeed": 2.0,
-    "bulletspeed": 3.0,
-    "hp": 5.0,
-    "movespeed": 1.5,
-    "range": 5.0
-  },
-  {
-    "Name": "bomb",
-    "Type": "normal",
-    "atk": 1.0,
-    "atkspeed": 0.0,
-    "bulletspeed": 0.0,
-    "hp": 3.0,
-    "movespeed": 2.0,
-    "range": 0.0
-  },
-  {
-    "Name": "Boss1",
-    "Type": "boss",
-    "atk": "NaN",
-    "atkspeed": "NaN",
-    "bulletspeed": "NaN",
-    "hp": "NaN",
-    "movespeed": "NaN",
-    "range": "NaN"
-  }
-]
+{
+  "items": [
+    {
+      "ID": 1001,
+      "Name": "turret",
+      "Type": "common",
+      "atk": 1.0,
+      "atkspeed": 2.0,
+      "bulletspeed": 3.0,
+      "hp": 8.0,
+      "movespeed": 0.0,
+      "range": 7.0
+    },
+    {
+      "ID": 1002,
+      "Name": "ranged",
+      "Type": "common",
+      "atk": 1.0,
+      "atkspeed": 2.0,
+      "bulletspeed": 3.0,
+      "hp": 5.0,
+      "movespeed": 1.5,
+      "range": 5.0
+    },
+    {
+      "ID": 1003,
+      "Name": "bomb",
+      "Type": "common",
+      "atk": 1.0,
+      "atkspeed": 0.0,
+      "bulletspeed": 0.0,
+      "hp": 3.0,
+      "movespeed": 2.0,
+      "range": 0.0
+    }
+  ]
+}

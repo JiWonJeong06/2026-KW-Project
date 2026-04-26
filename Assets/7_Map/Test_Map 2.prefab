@@ -281,6 +281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 1
   doorTier: 3
+  cardSpawner: {fileID: 0}
 --- !u!1 &537618097492777991
 GameObject:
   m_ObjectHideFlags: 0
@@ -1159,6 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 0
   doorTier: 2
+  cardSpawner: {fileID: 0}
 --- !u!1 &1934399641492953818
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,6 +1442,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 0
   doorTier: 1
+  cardSpawner: {fileID: 0}
 --- !u!1 &2985591012963133064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1804,6 +1807,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 2
   doorTier: 1
+  cardSpawner: {fileID: 0}
 --- !u!1 &3358804010293979529
 GameObject:
   m_ObjectHideFlags: 0
@@ -2756,6 +2760,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 1
   doorTier: 1
+  cardSpawner: {fileID: 0}
 --- !u!1 &4729412881342629758
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 2
   doorTier: 3
+  cardSpawner: {fileID: 0}
 --- !u!1 &5533687666141047340
 GameObject:
   m_ObjectHideFlags: 0
@@ -3402,7 +3408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1041792780295261685
 Transform:
   m_ObjectHideFlags: 0
@@ -3717,6 +3723,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 2
   doorTier: 2
+  cardSpawner: {fileID: 0}
 --- !u!1 &6011762545629126516
 GameObject:
   m_ObjectHideFlags: 0
@@ -3998,6 +4005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 0
   doorTier: 3
+  cardSpawner: {fileID: 0}
 --- !u!1 &6158746597106110119
 GameObject:
   m_ObjectHideFlags: 0
@@ -8654,6 +8662,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::OpenedDoor
   doorColor: 1
   doorTier: 2
+  cardSpawner: {fileID: 0}
 --- !u!1 &9217988136831645782
 GameObject:
   m_ObjectHideFlags: 0

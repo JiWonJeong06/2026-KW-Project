@@ -2,54 +2,109 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public float hp;
-    public float damage;
-    public float attackRange;
-    public float fireRate;
-    float fireTimer;
-    Transform player;
-    public GameObject bulletPrefab;
-    public Transform firePoint;
+    [Header("Data")]
+    [SerializeField] protected int mobID;
 
-    
-    void Start()
+    [Header("Info")]
+    public string mobName;
+    public string mobType;
+
+    [Header("Stat")]
+    public float atk;
+    public float atkspeed;
+    public float bulletspeed;
+    public float maxHp;
+    public float currentHp;
+    public float movespeed;
+    public float range;
+
+    protected Transform player;
+    protected Rigidbody2D rb;
+
+    protected virtual void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    protected virtual void Start()
     {
-        if (player == null) return;
+        FindPlayer();
+        LoadData();
+    }
 
-        float dist = Vector2.Distance(transform.position, player.position);
+    protected virtual void FindPlayer()
+    {
+        Player foundPlayer = FindFirstObjectByType<Player>();
 
-        if (dist <= attackRange)
+        if (foundPlayer != null)
         {
-            fireTimer += Time.deltaTime;
-
-            if (fireTimer >= fireRate)
-            {
-                fireTimer = 0f;
-                Shoot();
-            }
+            player = foundPlayer.transform;
+        }
+        else
+        {
+            Debug.LogWarning("Player를 찾지 못함");
         }
     }
 
-    void Shoot()
+    protected virtual void LoadData()
     {
-        Vector2 dir = (player.position - firePoint.position).normalized;
+        if (MobDataLoader.Instance == null)
+        {
+            Debug.LogWarning("MobDataLoader가 씬에 없음");
+            return;
+        }
 
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
+        MobData data = MobDataLoader.Instance.GetMobData(mobID);
 
-        EnemyBullet bulletScript = bullet.GetComponent<EnemyBullet>();
-        bulletScript.Init(dir, damage);
+        if (data == null)
+            return;
+
+        ApplyData(data);
     }
 
-    public void TakeDamage(float dmg)
+    public virtual void ApplyData(MobData data)
     {
-        hp -= dmg;
+        mobName = data.Name;
+        mobType = data.Type;
 
-        if (hp <= 0)
-            Destroy(gameObject);
+        atk = data.atk;
+        atkspeed = data.atkspeed;
+        bulletspeed = data.bulletspeed;
+        maxHp = data.hp;
+        currentHp = maxHp;
+        movespeed = data.movespeed;
+        range = data.range;
+    }
+
+    public virtual void TakeDamage(float damage)
+    {
+        currentHp -= damage;
+
+        if (currentHp <= 0)
+        {
+            currentHp = 0;
+            Die();
+        }
+    }
+
+    protected virtual void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    protected float GetDistanceToPlayer()
+    {
+        if (player == null)
+            return float.MaxValue;
+
+        return Vector2.Distance(transform.position, player.position);
+    }
+
+    protected Vector2 GetDirectionToPlayer()
+    {
+        if (player == null)
+            return Vector2.zero;
+
+        return ((Vector2)player.position - (Vector2)transform.position).normalized;
     }
 }
