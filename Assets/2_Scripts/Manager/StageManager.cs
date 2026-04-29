@@ -10,6 +10,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private Transform roomParent;
     [SerializeField] private Transform playerSpawn;
     [SerializeField] private Player player;
+    [SerializeField] private Pet pet;
 
     private GameObject currentRoom;
 
@@ -25,11 +26,13 @@ public class StageManager : MonoBehaviour
             return;
         }
         player = FindFirstObjectByType<Player>();
+   
     }
 
     void Start()
     {
         FirstRoomSetup();
+        pet = FindFirstObjectByType<Pet>();
     }
 
     void FirstRoomSetup()
@@ -85,6 +88,7 @@ public class StageManager : MonoBehaviour
         currentRoom = nextRoom;
 
         player.transform.position = playerSpawn.position;
+        pet.transform.position = playerSpawn.position;
 
         Debug.Log("다음 방 생성 완료");
     }
