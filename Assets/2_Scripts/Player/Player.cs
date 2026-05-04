@@ -1,3 +1,6 @@
+using Unity.Collections;
+using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
 
     // 무기
     [Header("Weapon")]
-    public GameObject bulletPrefab;
+    private GameObject bulletPrefab;
     public float Atkspeed;
     public float Bulletspeed;
     public float addbullet;
@@ -43,9 +46,21 @@ public class Player : MonoBehaviour
     private Vector2 input;
     private Vector2 lookDirection = Vector2.down;
 
+    //무기 총알
+    [Header("BulletType")]
+    public GameObject[] magentabullet;
+    public GameObject[] cyanbullet;
+    public GameObject[] yellowbullet;
+
+    [Header("WeaponType")]
+    public bool magentaweapon;
+    public bool cyanweapon;
+    public bool yellowweapon;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+
 
         if (animator != null)
         {
@@ -87,15 +102,25 @@ public class Player : MonoBehaviour
     {
         input = Vector2.zero;
 
-        if (Keyboard.current.dKey.isPressed)
+        if (Keyboard.current.dKey.isPressed){
             input.x = 1;
+        }
         else if (Keyboard.current.aKey.isPressed)
+        {
             input.x = -1;
+    
+        }
 
         if (Keyboard.current.wKey.isPressed)
+        {
             input.y = 1;
+
+        }
         else if (Keyboard.current.sKey.isPressed)
+        {
             input.y = -1;
+
+        }
 
         input = input.normalized;
 
@@ -121,46 +146,47 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Shoot()
+void Shoot()
+{
+    Vector2 dir = Vector2.zero;
+
+    if (Keyboard.current.rightArrowKey.isPressed)
+        dir = Vector2.right;
+    else if (Keyboard.current.leftArrowKey.isPressed)
+        dir = Vector2.left;
+    else if (Keyboard.current.upArrowKey.isPressed)
+        dir = Vector2.up;
+    else if (Keyboard.current.downArrowKey.isPressed)
+        dir = Vector2.down;
+
+    if (dir != Vector2.zero && Time.time >= nextFireTime)
     {
-        Vector2 dir = Vector2.zero;
-
-        if (Keyboard.current.rightArrowKey.isPressed)
-            dir.x += 1;
-        else if (Keyboard.current.leftArrowKey.isPressed)
-            dir.x -= 1;
-
-        if (Keyboard.current.upArrowKey.isPressed)
-            dir.y += 1;
-        else if (Keyboard.current.downArrowKey.isPressed)
-            dir.y -= 1;
-
-        // 대각선 발사 방지
-        if (dir.x != 0)
-            dir.y = 0;
-
-        if (dir != Vector2.zero && Time.time >= nextFireTime)
-        {
-            Fire(dir.normalized);
-            nextFireTime = Time.time + Atkspeed;
-        }
+        Fire(dir);
+        nextFireTime = Time.time + Atkspeed;
     }
+}
+void Fire(Vector2 dir)
+{
+    int bulletIndex = 0;
 
-    void Fire(Vector2 dir)
+    if (dir == Vector2.right)
+        bulletIndex = 0;
+    else if (dir == Vector2.left)
+        bulletIndex = 1;
+    else if (dir == Vector2.up)
+        bulletIndex = 2;
+    else if (dir == Vector2.down)
+        bulletIndex = 3;
+
+    GameObject prefab = magentabullet[bulletIndex];
+    GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
+
+    Bullet bulletScript = bullet.GetComponent<Bullet>();
+    if (bulletScript != null)
     {
-        if (bulletPrefab == null)
-            return;
-
-        GameObject bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
-
-        Bullet bulletScript = bullet.GetComponent<Bullet>();
-
-        if (bulletScript != null)
-        {
-            bulletScript.Init(dir, Bulletspeed);
-        }
+        bulletScript.Init(dir, Bulletspeed);
     }
-
+}
     void CheckInteractPrompt()
     {
         Collider2D[] hits = Physics2D.OverlapCircleAll(

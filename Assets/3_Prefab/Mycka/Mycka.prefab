@@ -303,13 +303,22 @@ MonoBehaviour:
   interactLayer:
     serializedVersion: 2
     m_Bits: 2048
+  interactPrompt: {fileID: 5926157375180307200}
   bleed: 0
   pierce: 0
-  bulletPrefab: {fileID: 8681704943041842000, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
   Atkspeed: 0
   Bulletspeed: 0
   addbullet: 0
-  interactPrompt: {fileID: 5926157375180307200}
+  magentabullet:
+  - {fileID: 7023879940247646079, guid: c1871cedb98134f48945b12c22379662, type: 3}
+  - {fileID: 8696370005652227886, guid: 30f42f411330eaf4185e9514c9502c01, type: 3}
+  - {fileID: 8893372183550868062, guid: 981f70de8be12f94aa9882788528c194, type: 3}
+  - {fileID: 6971047315234360303, guid: 06dc3e19c4ff41d45bc0971b1382bffa, type: 3}
+  cyanbullet: []
+  yellowbullet: []
+  magentaweapon: 0
+  cyanweapon: 0
+  yellowweapon: 0
 --- !u!95 &4843800812009382640
 Animator:
   serializedVersion: 7
