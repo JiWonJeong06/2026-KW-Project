@@ -45,17 +45,17 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 input;
     private Vector2 lookDirection = Vector2.down;
-
+    //총알 타입
+    [Header("WeaponType")]
+    public bool magentaweapon;
+    public bool cyanweapon;
+    public bool yellowweapon;
     //무기 총알
     [Header("BulletType")]
     public GameObject[] magentabullet;
     public GameObject[] cyanbullet;
     public GameObject[] yellowbullet;
 
-    [Header("WeaponType")]
-    public bool magentaweapon;
-    public bool cyanweapon;
-    public bool yellowweapon;
 
     void Awake()
     {
@@ -179,6 +179,9 @@ void Fire(Vector2 dir)
         bulletIndex = 3;
 
     GameObject prefab = magentabullet[bulletIndex];
+    //GameObject prefab = cyanbullet[bulletIndex];
+    //GameObject prefab = yellowbullet[bulletIndex];
+
     GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);
 
     Bullet bulletScript = bullet.GetComponent<Bullet>();
