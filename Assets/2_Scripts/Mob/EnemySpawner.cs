@@ -4,7 +4,7 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Spawn Settings")]
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefab;
     [SerializeField] private int spawnCount;
 
     [Header("Grid Settings")]
@@ -53,7 +53,8 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < finalSpawnCount; i++)
         {
-            Instantiate(enemyPrefab, availablePositions[i], Quaternion.identity);
+            int randomPrefabIndex = Random.Range(0, enemyPrefab.Length);
+            Instantiate(enemyPrefab[randomPrefabIndex], availablePositions[i], Quaternion.identity);
         }
     }
 }

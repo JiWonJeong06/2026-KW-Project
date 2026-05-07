@@ -17,8 +17,6 @@ public class MenuManager : MonoBehaviour
     {
         // 게임 시작 로직 추가
         Debug.Log("게임 시작");
-        SceneManager.LoadScene("1_Lobby");
-       // SceneManager.LoadScene("2_InGame");
     }
     public void OnSettingsButton()
     {

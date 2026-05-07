@@ -185,9 +185,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MyckaDataLoader
   jsonFile: {fileID: 4900000, guid: 4ac87f5b730be33438d602e88b004750, type: 3}
   player: {fileID: 6760438309315664452, guid: a367ea399a2b8834c965552956dc58be, type: 3}
-  bullet: {fileID: 3012211881433643995, guid: 474d4756eb8e71440b67a1a5009c587a, type: 3}
   pet: {fileID: 8474651620414083430, guid: 3c99a9052bb3d4044a8cac2db22c5051, type: 3}
   homingBullet: {fileID: -1657843880098285360, guid: 792ad9f783293d340a4d16f2faec5d1f, type: 3}
+  bullet:
+  - {fileID: 8431005742061034229, guid: 765327c44d7e5d6478eb35e10a17be15, type: 3}
+  - {fileID: 8431005742061034229, guid: 06dc3e19c4ff41d45bc0971b1382bffa, type: 3}
+  - {fileID: 8431005742061034229, guid: 19d11855f198f314db8ee0b7967274f5, type: 3}
+  - {fileID: 51128348513004465, guid: 8658bfc67605d654eaead8af64694140, type: 3}
+  - {fileID: 51128348513004465, guid: 30f42f411330eaf4185e9514c9502c01, type: 3}
+  - {fileID: 51128348513004465, guid: 839c92262d8ae0149bffab885e375a41, type: 3}
+  - {fileID: 6265772322277398915, guid: 93e15a1eeef88f14788ca8ac688faa4b, type: 3}
+  - {fileID: 6265772322277398915, guid: c1871cedb98134f48945b12c22379662, type: 3}
+  - {fileID: 6265772322277398915, guid: 564d5178d57cc634c932bd9e5561ba63, type: 3}
+  - {fileID: 4130588392713072446, guid: b6f42c79b74d19643b98ffb3b1e83d94, type: 3}
+  - {fileID: 4130588392713072446, guid: 981f70de8be12f94aa9882788528c194, type: 3}
+  - {fileID: 4130588392713072446, guid: 9cfd16445e24b184095cb2a18de1b827, type: 3}
 --- !u!4 &214755424
 Transform:
   m_ObjectHideFlags: 0
