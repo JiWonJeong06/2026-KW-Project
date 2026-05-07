@@ -178,8 +178,8 @@ void Fire(Vector2 dir)
     else if (dir == Vector2.down)
         bulletIndex = 3;
 
-    GameObject prefab = magentabullet[bulletIndex];
-    //GameObject prefab = cyanbullet[bulletIndex];
+    GameObject prefab = cyanbullet[bulletIndex];
+    //GameObject prefab = magentabullet[bulletIndex];
     //GameObject prefab = yellowbullet[bulletIndex];
 
     GameObject bullet = Instantiate(prefab, transform.position, Quaternion.identity);

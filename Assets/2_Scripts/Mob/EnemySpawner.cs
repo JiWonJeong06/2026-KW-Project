@@ -1,60 +1,125 @@
-using System.Collections.Generic;
-using UnityEngine;
+    using System.Collections.Generic;
+    using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
-{
-    [Header("Spawn Settings")]
-    [SerializeField] private GameObject[] enemyPrefab;
-    [SerializeField] private int spawnCount;
-
-    [Header("Grid Settings")]
-    [SerializeField] private int width;  
-    [SerializeField] private int height;     
-    [SerializeField] private float tileSize; 
-    [SerializeField] private Vector2 center = Vector2.zero; 
-
-    private void Start()
+    public class EnemySpawner : MonoBehaviour
     {
-        SpawnEnemies();
-    }
+        [Header("Grid")]
+        [SerializeField]
+        private int width = 20;
 
-    public void SpawnEnemies()
-    {
-        int maxCount = width * height;
-        int finalSpawnCount = Mathf.Min(spawnCount, maxCount);
+        [SerializeField]
+        private int height = 10;
 
-        List<Vector2> availablePositions = new List<Vector2>();
+        [SerializeField]
+        private float tileSize = 1f;
 
-        // 중앙 기준 시작 오프셋
-        float startX = center.x - (width / 2f) * tileSize + tileSize * 0.5f;
-        float startY = center.y - (height / 2f) * tileSize + tileSize * 0.5f;
+        [SerializeField]
+        private Vector2 center;
 
-        for (int x = 0; x < width; x++)
+        private int mapCode;
+
+        private void Awake()
         {
-            for (int y = 0; y < height; y++)
-            {
-                Vector2 worldPos = new Vector2(
-                    startX + x * tileSize,
-                    startY + y * tileSize
-                );
+            RandomMapCode();
 
-                availablePositions.Add(worldPos);
+            Debug.Log($"선택된 맵 코드 : {mapCode}");
+
+            SpawnEnemies();
+        }
+
+        private void RandomMapCode()
+        {
+            // Cyan 맵만 랜덤
+            mapCode = Random.Range(1001, 1010);
+        }
+
+        public void SpawnEnemies()
+        {
+            SpawnTableData table =
+                DataManager.Instance.GetSpawnTable(mapCode);
+
+            if (table == null)
+            {
+                Debug.LogError($"맵 코드 {mapCode} 없음");
+                return;
+            }
+
+            List<Vector2> positions = GeneratePositions();
+
+            int positionIndex = 0;
+
+            foreach (var monster in table.monsters)
+            {
+                int spawnCount =
+                    Random.Range(monster.minSpawn,
+                                monster.maxSpawn + 1);
+
+                for (int i = 0; i < spawnCount; i++)
+                {
+                    if (positionIndex >= positions.Count)
+                    {
+                        Debug.LogWarning("소환 위치 부족");
+                        return;
+                    }
+
+                    GameObject prefab =
+                        DataManager.Instance.GetEnemyPrefab(
+                            monster.monsterId);
+
+                    if (prefab == null)
+                    {
+                        Debug.LogWarning(
+                            $"몬스터 ID {monster.monsterId} 프리팹 없음");
+                        continue;
+                    }
+
+                    Instantiate(
+                        prefab,
+                        positions[positionIndex],
+                        Quaternion.identity
+                    );
+
+                    positionIndex++;
+                }
             }
         }
 
-        // Fisher-Yates Shuffle
-        for (int i = 0; i < availablePositions.Count; i++)
+        private List<Vector2> GeneratePositions()
         {
-            int randomIndex = Random.Range(i, availablePositions.Count);
-            Vector2 temp = availablePositions[i];
-            availablePositions[i] = availablePositions[randomIndex];
-            availablePositions[randomIndex] = temp;
+            List<Vector2> positions = new List<Vector2>();
+
+            float startX =
+                center.x - (width / 2f) * tileSize + tileSize * 0.5f;
+
+            float startY =
+                center.y - (height / 2f) * tileSize + tileSize * 0.5f;
+
+            for (int x = 0; x < width; x++)
+            {
+                for (int y = 0; y < height; y++)
+                {
+                    positions.Add(
+                        new Vector2(
+                            startX + x * tileSize,
+                            startY + y * tileSize
+                        )
+                    );
+                }
+            }
+
+            Shuffle(positions);
+
+            return positions;
         }
 
-        for (int i = 0; i < finalSpawnCount; i++)
+        private void Shuffle(List<Vector2> list)
         {
-            int randomPrefabIndex = Random.Range(0, enemyPrefab.Length);
-            Instantiate(enemyPrefab[randomPrefabIndex], availablePositions[i], Quaternion.identity);
+            for (int i = 0; i < list.Count; i++)
+            {
+                int rand = Random.Range(i, list.Count);
+
+                (list[i], list[rand]) =
+                    (list[rand], list[i]);
+            }
         }
     }
-}

@@ -3,7 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [Header("Data")]
-    [SerializeField] protected int mobID;
+    public int mobID;
 
     [Header("Info")]
     public string mobName;

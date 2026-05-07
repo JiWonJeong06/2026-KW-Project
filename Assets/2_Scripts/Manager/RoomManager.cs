@@ -1,5 +1,8 @@
 using UnityEngine;
 using TMPro;
+using System.Diagnostics;
+
+
 
 public class RoomManager : MonoBehaviour
 {
@@ -36,7 +39,7 @@ public class RoomManager : MonoBehaviour
         if (enemyCount == 0)
         {
             isCleared = true;
-            // enemyText.text = "Clear!";
+            print("방 클리어! 모든 적 처치됨.");
             OpenAllDoors();
         }
     }
@@ -71,14 +74,14 @@ public class RoomManager : MonoBehaviour
 
     public void SelectDoor(DoorController selectedDoor)
     {
-        Debug.Log($"선택한 문 색: {selectedDoor.doorColor}");
-        Debug.Log($"선택한 문 단계: {selectedDoor.doorTier}");
+       // Debug.Log($"선택한 문 색: {selectedDoor.doorColor}");
+      //  Debug.Log($"선택한 문 단계: {selectedDoor.doorTier}");
 
         // 여기서 나중에 업그레이드 UI 열기
         // UpgradeManager.Instance.ShowUpgradeChoices(selectedDoor.doorColor, selectedDoor.doorTier);
 
         // 지금은 테스트용
-        Debug.Log("업그레이드 선택창 열기");
+      //  Debug.Log("업그레이드 선택창 열기");
     }
 
     int CountEnemiesInRoom()
