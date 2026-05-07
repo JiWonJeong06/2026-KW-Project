@@ -15,6 +15,12 @@ EditorBuildSettings:
     path: Assets/5_Scenes/2_InGame.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/5_Scenes/3_CutScenes.unity
+    guid: c8e1d9018cd7fa948820907a1d57d423
+  - enabled: 1
+    path: Assets/5_Scenes/4_Tutorial.unity
+    guid: 95a63a934655c3f4f9667af6a934f7db
+  - enabled: 1
     path: Assets/5_Scenes/99_Loading.unity
     guid: b6d557f8914f06e45a1d2f3b777c64da
   m_configObjects:
