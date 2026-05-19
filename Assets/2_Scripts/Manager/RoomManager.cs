@@ -1,8 +1,5 @@
 using UnityEngine;
 using TMPro;
-using System.Diagnostics;
-
-
 
 public class RoomManager : MonoBehaviour
 {
@@ -39,17 +36,28 @@ public class RoomManager : MonoBehaviour
         if (enemyCount == 0)
         {
             isCleared = true;
-            print("방 클리어! 모든 적 처치됨.");
+            Debug.Log("방 클리어! 모든 적 처치됨.");
             OpenAllDoors();
+            
+            // ===== NEW: StageManager에 알림 =====
+            StageManager stageManager = FindFirstObjectByType<StageManager>();
+            if (stageManager != null)
+            {
+                stageManager.OnStageClear();
+            }
         }
     }
 
     void SetupDoors()
     {
-        redDoor.Init(this, DoorColor.Magenta, GetRandomTier());
-        blueDoor.Init(this, DoorColor.Cyan, GetRandomTier());
-        yellowDoor.Init(this, DoorColor.Yellow, GetRandomTier());
-
+        // ===== 수정: Init() 호출 - RoomManager 참조 제거, enum을 string/int로 변환 =====
+        
+        // DoorColor enum을 string으로 변환
+        redDoor.Init("Magenta", (int)GetRandomTier());
+        blueDoor.Init("Cyan", (int)GetRandomTier());
+        yellowDoor.Init("Yellow", (int)GetRandomTier());
+        
+        Debug.Log("[RoomManager] 3개 문 설정 완료");
     }
 
     DoorTier GetRandomTier()
@@ -63,6 +71,8 @@ public class RoomManager : MonoBehaviour
         redDoor.SetOpen(false);
         blueDoor.SetOpen(false);
         yellowDoor.SetOpen(false);
+        
+        Debug.Log("[RoomManager] 모든 문 닫음");
     }
 
     void OpenAllDoors()
@@ -70,18 +80,17 @@ public class RoomManager : MonoBehaviour
         redDoor.SetOpen(true);
         blueDoor.SetOpen(true);
         yellowDoor.SetOpen(true);
+        
+        Debug.Log("[RoomManager] 모든 문 열음");
     }
 
     public void SelectDoor(DoorController selectedDoor)
     {
-       // Debug.Log($"선택한 문 색: {selectedDoor.doorColor}");
-      //  Debug.Log($"선택한 문 단계: {selectedDoor.doorTier}");
+        // 선택한 문 정보 출력 (선택사항)
+        Debug.Log($"[RoomManager] 선택한 문 열기");
 
-        // 여기서 나중에 업그레이드 UI 열기
-        // UpgradeManager.Instance.ShowUpgradeChoices(selectedDoor.doorColor, selectedDoor.doorTier);
-
-        // 지금은 테스트용
-      //  Debug.Log("업그레이드 선택창 열기");
+        // 나중에 카드 UI 표시
+        // CardUISystem.DisplayCards(...);
     }
 
     int CountEnemiesInRoom()
@@ -110,3 +119,5 @@ public class RoomManager : MonoBehaviour
         return count;
     }
 }
+
+// ===== 기존 코드용 Enum 정의 (필요시) =====

@@ -9,9 +9,13 @@ public class Pet : MonoBehaviour
 
     [Header("Attack")]
     public GameObject homingBulletPrefab;
-    public float petcd;
-    public float pethp;
-    public float petaddbullet;
+    
+    // ===== 펫 데이터 (PetData 필드) =====
+    public float atk;                // 펫 공격력
+    public float cooldown;           // 펫 공격 쿨타임
+    public float hp;                 // 펫 체력
+    public float additionalBullet;   // 펫 추가 총알
+    public float bulletSpeed;        // 펫 총알 속도
 
     private float timer;
 
@@ -21,18 +25,25 @@ public class Pet : MonoBehaviour
         AttackTimer();
     }
 
-    public void ApplyPetData(MyckaData data)
+    // ===== PetData를 받는 메서드 =====
+    public void ApplyData(PetData data)
     {
-        petcd = data.petcd;
-        pethp = data.pethp;
-        petaddbullet = data.petaddbullet;
+        atk = data.atk;
+        cooldown = data.cooldown;
+        hp = data.hp;
+        additionalBullet = data.additionalBullet;
+        bulletSpeed = data.bulletSpeed;
     }
 
+
+
+    // ===== Player 설정 (PetSpawner에서 호출됨) =====
     public void SetPlayer(Transform target)
     {
         player = target;
     }
 
+    // ===== Player를 따라다님 =====
     void FollowPlayer()
     {
         if (player == null) return;
@@ -50,19 +61,21 @@ public class Pet : MonoBehaviour
         }
     }
 
+    // ===== 공격 타이머 =====
     void AttackTimer()
     {
-        if (petcd <= 0f) return;
+        if (cooldown <= 0f) return;
 
         timer += Time.fixedDeltaTime;
 
-        if (timer >= petcd)
+        if (timer >= cooldown)
         {
             timer = 0f;
             FireToNearestEnemy();
         }
     }
 
+    // ===== 가장 가까운 적에게 발사 =====
     void FireToNearestEnemy()
     {
         if (homingBulletPrefab == null) return;

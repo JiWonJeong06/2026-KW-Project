@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 6868693383649403530}
   - component: {fileID: -745398318237801460}
   - component: {fileID: 7595807520169557536}
-  - component: {fileID: 3386610517972061030}
+  - component: {fileID: 6936817248019701849}
+  - component: {fileID: 1482176728096970459}
   m_Layer: 7
   m_Name: InkSlime
   m_TagString: Enemy
@@ -139,8 +140,8 @@ MonoBehaviour:
   currentHp: 0
   movespeed: 0
   range: 0
-  detectRange: 5
-  explosionRange: 0.85
+  detectRange: 3
+  explosionRange: 0.8
   playerLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -171,7 +172,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &3386610517972061030
+--- !u!58 &6936817248019701849
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -201,9 +202,31 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.22537753}
-  m_Radius: 0.27462247
+  m_Offset: {x: 0.00554204, y: -0.036368504}
+  m_Radius: 0.23248295
+--- !u!95 &1482176728096970459
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262109277558788056}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfd937a284ff9ff4892f1bc7f4c16226, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

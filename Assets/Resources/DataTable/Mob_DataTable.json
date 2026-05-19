@@ -2,17 +2,6 @@
   "items": [
     {
       "ID": 1001,
-      "Name": "turret",
-      "Type": "common",
-      "atk": 1.0,
-      "atkspeed": 2.0,
-      "bulletspeed": 3.0,
-      "hp": 8.0,
-      "movespeed": 0.0,
-      "range": 7.0
-    },
-    {
-      "ID": 1002,
       "Name": "ranged",
       "Type": "common",
       "atk": 1.0,
@@ -21,6 +10,17 @@
       "hp": 5.0,
       "movespeed": 1.5,
       "range": 5.0
+    },
+    {
+      "ID": 1002,
+      "Name": "turret",
+      "Type": "common",
+      "atk": 1.0,
+      "atkspeed": 2.0,
+      "bulletspeed": 3.0,
+      "hp": 8.0,
+      "movespeed": 0.0,
+      "range": 7.0
     },
     {
       "ID": 1003,
@@ -32,6 +32,17 @@
       "hp": 3.0,
       "movespeed": 2.0,
       "range": 0.0
+    },
+    {
+      "ID": 9001,
+      "Name": "CyanBoss1",
+      "Type": "Boss",
+      "atk": 1.0,
+      "atkspeed": 1.0,
+      "bulletspeed": 3.0,
+      "hp": 40.0,
+      "movespeed": 0.0,
+      "range": 999.0
     }
   ]
 }

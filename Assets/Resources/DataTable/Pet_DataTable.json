@@ -1,0 +1,10 @@
+{
+  "name": "DefaultPet",
+  "koreanName": "기본 펫",
+  "japaneseName": "デフォルトペット",
+  "atk": 1.0,
+  "cooldown": 20.0,
+  "hp": 1.0,
+  "additionalBullet": 0,
+  "bulletSpeed": 5.0
+}

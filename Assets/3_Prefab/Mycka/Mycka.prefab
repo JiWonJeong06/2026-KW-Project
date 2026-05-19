@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1518734207
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -673614152893031291, guid: ec701a6e8d101e84b883112423baeda9, type: 3}
@@ -169,7 +169,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1518734207
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5438740182927701595, guid: ec701a6e8d101e84b883112423baeda9, type: 3}
@@ -269,7 +269,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1518734207
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3686116149349314476, guid: c97996b3d4625db468938c40efde3818, type: 3}
@@ -297,36 +297,44 @@ MonoBehaviour:
   Name: 
   animator: {fileID: 4843800812009382640}
   speed: 0
+  atk: 0
+  atkspeed: 0
+  bulletspeed: 0
+  addbullet: 3
+  addrange: 3
   hp: 0
   currenthp: 0
-  interactRadius: 0.6
+  interactRadius: 0
   interactLayer:
     serializedVersion: 2
     m_Bits: 2048
-  interactPrompt: {fileID: 5926157375180307200}
+  interactPrompt: {fileID: 0}
   bleed: 0
   pierce: 0
   Atkspeed: 0
   Bulletspeed: 0
-  addbullet: 0
-  magentaweapon: 0
-  cyanweapon: 0
-  yellowweapon: 0
-  magentabullet:
-  - {fileID: 7023879940247646079, guid: c1871cedb98134f48945b12c22379662, type: 3}
-  - {fileID: 8696370005652227886, guid: 30f42f411330eaf4185e9514c9502c01, type: 3}
-  - {fileID: 8893372183550868062, guid: 981f70de8be12f94aa9882788528c194, type: 3}
-  - {fileID: 6971047315234360303, guid: 06dc3e19c4ff41d45bc0971b1382bffa, type: 3}
-  cyanbullet:
-  - {fileID: 7023879940247646079, guid: 93e15a1eeef88f14788ca8ac688faa4b, type: 3}
-  - {fileID: 8696370005652227886, guid: 8658bfc67605d654eaead8af64694140, type: 3}
-  - {fileID: 8893372183550868062, guid: b6f42c79b74d19643b98ffb3b1e83d94, type: 3}
-  - {fileID: 6971047315234360303, guid: 765327c44d7e5d6478eb35e10a17be15, type: 3}
-  yellowbullet:
-  - {fileID: 7023879940247646079, guid: 564d5178d57cc634c932bd9e5561ba63, type: 3}
-  - {fileID: 8696370005652227886, guid: 839c92262d8ae0149bffab885e375a41, type: 3}
-  - {fileID: 8893372183550868062, guid: 9cfd16445e24b184095cb2a18de1b827, type: 3}
-  - {fileID: 6971047315234360303, guid: 19d11855f198f314db8ee0b7967274f5, type: 3}
+  magentaWeaponRight: {fileID: -7765818174555041367, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  magentaWeaponLeft: {fileID: -6597374699177676189, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  magentaWeaponUp: {fileID: -3339132924550729644, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  magentaWeaponDown: {fileID: -3024581622962059211, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  cyanWeaponRight: {fileID: 918081295612614875, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  cyanWeaponLeft: {fileID: 830941629882463547, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  cyanWeaponUp: {fileID: -7170856722037587540, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  cyanWeaponDown: {fileID: -5626316473008714972, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  yellowWeaponRight: {fileID: -6367983344542026412, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  yellowWeaponLeft: {fileID: 8785401910315706979, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  yellowWeaponUp: {fileID: 7998860470702247544, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  yellowWeaponDown: {fileID: -3482759766518691229, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  bulletPrefab: {fileID: 6557688346685204810, guid: dbeb4c15e11b1eb4894314ae30787439, type: 3}
+  pierceLevel: 0
+  bleedLevel: 0
+  magentaCount: 0
+  cyanCount: 0
+  yellowCount: 0
+  petAtk: 1
+  petCooldown: 20
+  petHp: 1
+  petAddbullet: 0
 --- !u!95 &4843800812009382640
 Animator:
   serializedVersion: 7
@@ -491,7 +499,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1518734207
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: ee238248b023976448b2dd389fd8f337, type: 3}
@@ -666,7 +674,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1518734207
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5826524714735209073, guid: ec701a6e8d101e84b883112423baeda9, type: 3}

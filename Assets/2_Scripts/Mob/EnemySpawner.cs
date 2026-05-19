@@ -30,7 +30,7 @@
         private void RandomMapCode()
         {
             // Cyan 맵만 랜덤
-            mapCode = Random.Range(1001, 1010);
+            mapCode = Random.Range(1001, 1008);
         }
 
         public void SpawnEnemies()

@@ -6,21 +6,17 @@ using UnityEngine.SceneManagement;
 public class MenuManager : MonoBehaviour
 {
     public Button firstButton;
+    public GameObject SettingsPanel;
 
     void Start()
     {
         EventSystem.current.SetSelectedGameObject(null);
         firstButton.Select();
     }
-
-    public void OnStartButton()
-    {
-        // 게임 시작 로직 추가
-        Debug.Log("게임 시작");
-    }
     public void OnSettingsButton()
     {
         // 설정 메뉴 로직 추가
+        SettingsPanel.SetActive(true);
         Debug.Log("설정 메뉴");
     }
 

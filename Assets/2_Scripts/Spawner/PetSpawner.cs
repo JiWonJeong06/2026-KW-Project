@@ -1,9 +1,16 @@
 using UnityEngine;
 
+/// <summary>
+/// 펫을 생성하고 Player와 연결하는 클래스
+/// 역할:
+/// - Pet 프리팹 인스턴시화
+/// - Player 찾기
+/// - pet.SetPlayer(player) 호출 ← 핵심!
+/// </summary>
 public class PetSpawner : MonoBehaviour
 {
-    public GameObject petPrefab;
-    public Transform spawnPoint;
+    [SerializeField] private GameObject petPrefab;
+    [SerializeField] private Transform spawnPoint;
 
     void Start()
     {
@@ -12,20 +19,28 @@ public class PetSpawner : MonoBehaviour
 
     void SpawnPet()
     {
-        if (petPrefab == null || spawnPoint == null)
+        // 1. 검증
+        if (petPrefab == null)
         {
-            Debug.LogError("Pet prefab or spawn point is not assigned.");
+            Debug.LogError("Pet prefab이 할당되지 않음");
             return;
         }
 
-        Player player = FindFirstObjectByType<Player>();
+        if (spawnPoint == null)
+        {
+            Debug.LogError("Spawn point가 할당되지 않음");
+            return;
+        }
 
+        // 2. Player 찾기
+        Player player = FindFirstObjectByType<Player>();
         if (player == null)
         {
-            Debug.LogError("Player를 찾을 수 없음");
+            Debug.LogError("Player를 찾을 수 없음. Player가 생성되었는지 확인하세요.");
             return;
         }
 
+        // 3. Pet 생성
         GameObject petObj = Instantiate(
             petPrefab,
             spawnPoint.position,
@@ -33,15 +48,23 @@ public class PetSpawner : MonoBehaviour
             spawnPoint
         );
 
-        Pet pet = petObj.GetComponent<Pet>();
+        if (petObj == null)
+        {
+            Debug.LogError("Pet 인스턴시화 실패");
+            return;
+        }
 
-        if (pet != null)
+        // 4. Pet 컴포넌트 가져오기
+        Pet pet = petObj.GetComponent<Pet>();
+        if (pet == null)
         {
-            pet.SetPlayer(player.transform);
+            Debug.LogError("Pet 스크립트를 찾을 수 없음");
+            Destroy(petObj);
+            return;
         }
-        else
-        {
-            Debug.LogError("생성한 펫 프리팹에 Pet 스크립트가 없음");
-        }
+
+        // 5. *** 핵심: Pet에게 Player 전달 ***
+        pet.SetPlayer(player.transform);
+        Debug.Log("Pet이 Player를 따라다니도록 설정됨");
     }
 }
