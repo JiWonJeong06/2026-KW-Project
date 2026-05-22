@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6404425271859919024}
   - component: {fileID: 6741974895297826071}
-  - component: {fileID: 6868693383649403530}
-  - component: {fileID: -745398318237801460}
   - component: {fileID: 7595807520169557536}
   - component: {fileID: 6936817248019701849}
   - component: {fileID: 1482176728096970459}
+  - component: {fileID: 5361850977976335492}
   m_Layer: 7
   m_Name: InkSlime
   m_TagString: Enemy
@@ -83,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1862189753
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5650649293147918032, guid: 12142707560509146a03e325b1fb6340, type: 3}
@@ -96,55 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &6868693383649403530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262109277558788056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905a053b58be7b44389927d30386ae5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  mobID: 1003
-  mobName: 
-  mobType: 
-  atk: 0
-  atkspeed: 0
-  bulletspeed: 0
-  maxHp: 0
-  currentHp: 0
-  movespeed: 0
-  range: 0
---- !u!114 &-745398318237801460
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262109277558788056}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db36c95134e06c44a92684ca835c787e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SuicideEnemy
-  mobID: 1003
-  mobName: 
-  mobType: 
-  atk: 0
-  atkspeed: 0
-  bulletspeed: 0
-  maxHp: 0
-  currentHp: 0
-  movespeed: 0
-  range: 0
-  detectRange: 3
-  explosionRange: 0.8
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!50 &7595807520169557536
 Rigidbody2D:
   serializedVersion: 5
@@ -230,3 +180,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5361850977976335492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262109277558788056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45e7428b398a294d8c0285676c7b3a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BombEnemy

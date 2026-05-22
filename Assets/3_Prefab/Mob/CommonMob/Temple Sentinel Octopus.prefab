@@ -10,12 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1124662992320324021}
   - component: {fileID: 3587303120579179223}
-  - component: {fileID: -4135950349581714472}
-  - component: {fileID: 4894419093301655654}
-  - component: {fileID: -823691328275320764}
   - component: {fileID: 51086004082904254}
   - component: {fileID: -653581792856261122}
   - component: {fileID: 7547243097555898476}
+  - component: {fileID: 2437865216165708110}
   m_Layer: 7
   m_Name: Temple Sentinel Octopus
   m_TagString: Enemy
@@ -97,73 +95,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-4135950349581714472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7144678975709969002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 905a053b58be7b44389927d30386ae5d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  mobID: 1002
-  mobName: 
-  mobType: 
-  atk: 0
-  atkspeed: 0
-  bulletspeed: 0
-  maxHp: 0
-  currentHp: 0
-  movespeed: 0
-  range: 0
-  visionRange: 5
-  visionAngle: 45
-  separationRadius: 1.2
-  separationStrength: 2
---- !u!114 &4894419093301655654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7144678975709969002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e3b92693f8e1074299a8d73dccd896e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::FixedRangedEnemy
-  mobID: 1002
-  mobName: 
-  mobType: 
-  atk: 0
-  atkspeed: 0
-  bulletspeed: 0
-  maxHp: 0
-  currentHp: 0
-  movespeed: 0
-  range: 0
-  visionRange: 6
-  visionAngle: 45
-  separationRadius: 1.2
-  separationStrength: 2
-  bulletPrefab: {fileID: 8928884553671550896, guid: d1a235b146629144a82ef7cafaa74db0, type: 3}
-  firePoint: {fileID: 1124662992320324021}
---- !u!114 &-823691328275320764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7144678975709969002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5654eefcbbc6b04bb011859c014cd51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyBullet
-  lifeTime: 3
 --- !u!50 &51086004082904254
 Rigidbody2D:
   serializedVersion: 5
@@ -259,3 +190,17 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2437865216165708110
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7144678975709969002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aa6392007a3a8a429dc4ef7b78692e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TurretEnemy
+  enemy_bullet_prefab: {fileID: 8928884553671550896, guid: d1a235b146629144a82ef7cafaa74db0, type: 3}
+  shoot_point: {fileID: 1124662992320324021}

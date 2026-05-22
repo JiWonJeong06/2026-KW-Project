@@ -196,6 +196,7 @@ GameObject:
   - component: {fileID: 4843800812009382640}
   - component: {fileID: 1739772671692595900}
   - component: {fileID: 5144982959113091078}
+  - component: {fileID: 3924958275684269566}
   m_Layer: 6
   m_Name: Mycka
   m_TagString: Player
@@ -291,50 +292,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4340570371746144754}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 637858b00d22512498f38cbd289d6587, type: 3}
+  m_Script: {fileID: 11500000, guid: 1dffe4dda9f509946bd27efe59f31888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  Name: 
-  animator: {fileID: 4843800812009382640}
-  speed: 0
-  atk: 0
-  atkspeed: 0
-  bulletspeed: 0
-  addbullet: 3
-  addrange: 3
-  hp: 0
-  currenthp: 0
-  interactRadius: 0
-  interactLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  interactPrompt: {fileID: 0}
-  bleed: 0
-  pierce: 0
-  Atkspeed: 0
-  Bulletspeed: 0
-  magentaWeaponRight: {fileID: -7765818174555041367, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  magentaWeaponLeft: {fileID: -6597374699177676189, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  magentaWeaponUp: {fileID: -3339132924550729644, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  magentaWeaponDown: {fileID: -3024581622962059211, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  cyanWeaponRight: {fileID: 918081295612614875, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  cyanWeaponLeft: {fileID: 830941629882463547, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  cyanWeaponUp: {fileID: -7170856722037587540, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  cyanWeaponDown: {fileID: -5626316473008714972, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  yellowWeaponRight: {fileID: -6367983344542026412, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  yellowWeaponLeft: {fileID: 8785401910315706979, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  yellowWeaponUp: {fileID: 7998860470702247544, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  yellowWeaponDown: {fileID: -3482759766518691229, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
-  bulletPrefab: {fileID: 6557688346685204810, guid: dbeb4c15e11b1eb4894314ae30787439, type: 3}
-  pierceLevel: 0
-  bleedLevel: 0
-  magentaCount: 0
-  cyanCount: 0
-  yellowCount: 0
-  petAtk: 1
-  petCooldown: 20
-  petHp: 1
-  petAddbullet: 0
 --- !u!95 &4843800812009382640
 Animator:
   serializedVersion: 7
@@ -421,6 +381,24 @@ CapsuleCollider2D:
   m_Offset: {x: -0.00125736, y: -0.042598367}
   m_Size: {x: 0.4684679, y: 0.8466897}
   m_Direction: 0
+--- !u!114 &3924958275684269566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4340570371746144754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00ccc852ba80d2749a042b1461cc8942, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Weapon
+  projectile_prefab: {fileID: 6557688346685204810, guid: dbeb4c15e11b1eb4894314ae30787439, type: 3}
+  shoot_point: {fileID: 8222077950029023300}
+  sprite_up: {fileID: -7170856722037587540, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  sprite_down: {fileID: -5626316473008714972, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  sprite_left: {fileID: 830941629882463547, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
+  sprite_right: {fileID: 918081295612614875, guid: 23d9c8eee5b39324ab0d7f6c926aa814, type: 3}
 --- !u!1 &5926157375180307200
 GameObject:
   m_ObjectHideFlags: 0

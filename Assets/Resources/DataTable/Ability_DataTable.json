@@ -116,7 +116,7 @@
     "subAbility": "none",
     "increase": 1,
     "subIncrease": 0,
-    "explanation": "출혈 효과가 발동 되고, 3초에 걸쳐 체력을 1 씩 감소합니다.",
+    "explanation": "출혈 효과가 발동 되고, 이효과는 3동안 공격력의 15% 씩 체력을 감소시킵니다.",
     "text": "\"이곳은 텍스트 부분 입니다.\""
   },
   {
