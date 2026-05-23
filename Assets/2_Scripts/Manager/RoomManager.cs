@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class RoomManager : MonoBehaviour
 {
+    private static RoomManager instance;
+    public static RoomManager Instance => instance;
+
     [Header("스폰 관리")]
     [SerializeField] private Spawner spawner;
 
@@ -46,9 +49,15 @@ public class RoomManager : MonoBehaviour
     private string cyan_rank = "";
     private string magenta_rank = "";
     private string yellow_rank = "";
+    private string last_selected_rank = "C"; // 선택된 문의 등급 (기본값: C)
 
     [Header("이벤트")]
     public UnityEvent on_room_clear;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -293,4 +302,14 @@ public class RoomManager : MonoBehaviour
     public string GetCyanRank() => cyan_rank;
     public string GetMagentaRank() => magenta_rank;
     public string GetYellowRank() => yellow_rank;
+
+    // 선택된 문의 등급 저장 (Door에서 호출)
+    public void SetLastSelectedRank(string rank)
+    {
+        last_selected_rank = rank;
+        Debug.Log($"[RoomManager] 선택된 문 등급: {rank}");
+    }
+
+    // 선택된 문의 등급 가져오기 (AbilityCardUI에서 호출)
+    public string GetLastSelectedRank() => last_selected_rank;
 }
