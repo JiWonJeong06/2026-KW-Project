@@ -34,10 +34,7 @@ public class EnemyDataLoader : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(gameObject);
-    }
 
-    private void Start()
-    {
         LoadEnemyData();
     }
 

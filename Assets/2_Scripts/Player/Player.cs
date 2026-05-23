@@ -76,6 +76,13 @@ public class Player : MonoBehaviour
 
     private void HandleShootInput()
     {
+        // 안전지대에서는 공격 불가
+        if (SafeZone.Instance != null && SafeZone.Instance.IsPlayerInside())
+        {
+            animator.SetBool("isAttack", false);
+            return;
+        }
+
         var keyboard = Keyboard.current;
         Vector2 shoot_direction = Vector2.zero;
         bool is_shooting = false;
