@@ -70,8 +70,8 @@ public class SafeZone : MonoBehaviour
             room_manager.StartRoom();
         }
 
-        // SafeZone GameObject 자체 비활성화
-        gameObject.SetActive(false);
+        // SafeZone 스크립트만 비활성화 (GameObject는 활성화 유지)
+        enabled = false;
     }
 
     public bool IsPlayerInside()

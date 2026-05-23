@@ -3,6 +3,14 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("UI")]
+    [SerializeField] private GameObject f_key_prompt; // F키 상호작용 스프라이트
+
+    [Header("Weapon Visuals")]
+    [SerializeField] private GameObject cyan_weapon;    // Cyan 무기 외형
+    [SerializeField] private GameObject magenta_weapon; // Magenta 무기 외형
+    [SerializeField] private GameObject yellow_weapon;  // Yellow 무기 외형
+
     private PlayerData playerData;
     private Rigidbody2D rb;
     private Weapon weapon;
@@ -34,6 +42,15 @@ public class Player : MonoBehaviour
         }
 
         current_hp = playerData.hp;
+
+        // F키 프롬프트 초기화
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(false);
+        }
+
+        // 초기 무기 설정 (Cyan 우선)
+        UpdateWeaponVisual();
     }
 
     private void Update()
@@ -162,4 +179,84 @@ public class Player : MonoBehaviour
     public float GetMaxHp() => playerData?.hp ?? 0;
     public Vector2 GetCurrentDirection() => current_direction;
     public bool IsAlive() => is_alive;
+
+    // F키 프롬프트 표시/숨김
+    public void ShowFKeyPrompt()
+    {
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(true);
+        }
+    }
+
+    public void HideFKeyPrompt()
+    {
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(false);
+        }
+    }
+
+    // 무기 외형 업데이트 (증강 개수에 따라)
+    public void UpdateWeaponVisual()
+    {
+        // PlayerStats에서 가장 많은 타입 가져오기 (우선순위: Cyan > Magenta > Yellow)
+        string dominant_type = PlayerStats.Instance.GetDominantAbilityType();
+
+        // 모든 무기 비활성화
+        if (cyan_weapon != null) cyan_weapon.SetActive(false);
+        if (magenta_weapon != null) magenta_weapon.SetActive(false);
+        if (yellow_weapon != null) yellow_weapon.SetActive(false);
+
+        // 우세한 타입의 무기만 활성화
+        if (dominant_type == "Cyan" && cyan_weapon != null)
+        {
+            cyan_weapon.SetActive(true);
+            Debug.Log("[Player] Cyan 무기 활성화");
+        }
+        else if (dominant_type == "Magenta" && magenta_weapon != null)
+        {
+            magenta_weapon.SetActive(true);
+            Debug.Log("[Player] Magenta 무기 활성화");
+        }
+        else if (dominant_type == "Yellow" && yellow_weapon != null)
+        {
+            yellow_weapon.SetActive(true);
+            Debug.Log("[Player] Yellow 무기 활성화");
+        }
+        else
+        {
+            Debug.LogWarning($"[Player] {dominant_type} 무기 GameObject가 없습니다!");
+        }
+
+        // Weapon 컴포넌트에 현재 타입 전달 (총알 스프라이트 변경)
+        // 활성화된 무기에서 Weapon 컴포넌트 찾기
+        Weapon active_weapon = null;
+        if (cyan_weapon != null && cyan_weapon.activeSelf)
+        {
+            active_weapon = cyan_weapon.GetComponent<Weapon>();
+        }
+        else if (magenta_weapon != null && magenta_weapon.activeSelf)
+        {
+            active_weapon = magenta_weapon.GetComponent<Weapon>();
+        }
+        else if (yellow_weapon != null && yellow_weapon.activeSelf)
+        {
+            active_weapon = yellow_weapon.GetComponent<Weapon>();
+        }
+
+        if (active_weapon != null)
+        {
+            active_weapon.SetWeaponType(dominant_type);
+        }
+        else if (weapon != null)
+        {
+            // Player에 직접 붙어있는 Weapon 컴포넌트 사용
+            weapon.SetWeaponType(dominant_type);
+        }
+        else
+        {
+            Debug.LogWarning("[Player] Weapon 컴포넌트를 찾을 수 없습니다!");
+        }
+    }
 }

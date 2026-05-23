@@ -3,6 +3,9 @@ using UnityEngine.Events;
 
 public class RoomManager : MonoBehaviour
 {
+    private static RoomManager instance;
+    public static RoomManager Instance => instance;
+
     [Header("스폰 관리")]
     [SerializeField] private Spawner spawner;
 
@@ -26,6 +29,17 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject door_yellow_opened_b; // 중간문 (B등급)
     [SerializeField] private GameObject door_yellow_opened_a; // 진한문 (A등급)
 
+    [Header("Door 스크립트 (등급별 9개)")]
+    [SerializeField] private Door door_cyan_c;
+    [SerializeField] private Door door_cyan_b;
+    [SerializeField] private Door door_cyan_a;
+    [SerializeField] private Door door_magenta_c;
+    [SerializeField] private Door door_magenta_b;
+    [SerializeField] private Door door_magenta_a;
+    [SerializeField] private Door door_yellow_c;
+    [SerializeField] private Door door_yellow_b;
+    [SerializeField] private Door door_yellow_a;
+
     [Header("방 상태")]
     [SerializeField] private bool is_boss_room = false;
 
@@ -35,9 +49,15 @@ public class RoomManager : MonoBehaviour
     private string cyan_rank = "";
     private string magenta_rank = "";
     private string yellow_rank = "";
+    private string last_selected_rank = "C"; // 선택된 문의 등급 (기본값: C)
 
     [Header("이벤트")]
     public UnityEvent on_room_clear;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
@@ -51,6 +71,7 @@ public class RoomManager : MonoBehaviour
     public void StartRoom()
     {
         if (is_checking) return;
+
         is_checking = true;
         CloseDoors();
         Debug.Log("방 시작!");
@@ -90,6 +111,9 @@ public class RoomManager : MonoBehaviour
 
         // 모든 열린 문 비활성화
         DeactivateAllOpenedDoors();
+
+        // 모든 Door 스크립트 상호작용 비활성화
+        DeactivateAllDoorScripts();
     }
 
     // 문 열기 (방 클리어, 등급 랜덤)
@@ -138,21 +162,93 @@ public class RoomManager : MonoBehaviour
     {
         if (color == "Cyan")
         {
-            if (rank == "A" && door_cyan_opened_a != null) door_cyan_opened_a.SetActive(true);
-            else if (rank == "B" && door_cyan_opened_b != null) door_cyan_opened_b.SetActive(true);
-            else if (rank == "C" && door_cyan_opened_c != null) door_cyan_opened_c.SetActive(true);
+            if (rank == "A" && door_cyan_opened_a != null)
+            {
+                door_cyan_opened_a.SetActive(true);
+                if (door_cyan_a != null)
+                {
+                    door_cyan_a.SetRank("A");
+                    door_cyan_a.SetInteractable(true);
+                }
+            }
+            else if (rank == "B" && door_cyan_opened_b != null)
+            {
+                door_cyan_opened_b.SetActive(true);
+                if (door_cyan_b != null)
+                {
+                    door_cyan_b.SetRank("B");
+                    door_cyan_b.SetInteractable(true);
+                }
+            }
+            else if (rank == "C" && door_cyan_opened_c != null)
+            {
+                door_cyan_opened_c.SetActive(true);
+                if (door_cyan_c != null)
+                {
+                    door_cyan_c.SetRank("C");
+                    door_cyan_c.SetInteractable(true);
+                }
+            }
         }
         else if (color == "Magenta")
         {
-            if (rank == "A" && door_magenta_opened_a != null) door_magenta_opened_a.SetActive(true);
-            else if (rank == "B" && door_magenta_opened_b != null) door_magenta_opened_b.SetActive(true);
-            else if (rank == "C" && door_magenta_opened_c != null) door_magenta_opened_c.SetActive(true);
+            if (rank == "A" && door_magenta_opened_a != null)
+            {
+                door_magenta_opened_a.SetActive(true);
+                if (door_magenta_a != null)
+                {
+                    door_magenta_a.SetRank("A");
+                    door_magenta_a.SetInteractable(true);
+                }
+            }
+            else if (rank == "B" && door_magenta_opened_b != null)
+            {
+                door_magenta_opened_b.SetActive(true);
+                if (door_magenta_b != null)
+                {
+                    door_magenta_b.SetRank("B");
+                    door_magenta_b.SetInteractable(true);
+                }
+            }
+            else if (rank == "C" && door_magenta_opened_c != null)
+            {
+                door_magenta_opened_c.SetActive(true);
+                if (door_magenta_c != null)
+                {
+                    door_magenta_c.SetRank("C");
+                    door_magenta_c.SetInteractable(true);
+                }
+            }
         }
         else if (color == "Yellow")
         {
-            if (rank == "A" && door_yellow_opened_a != null) door_yellow_opened_a.SetActive(true);
-            else if (rank == "B" && door_yellow_opened_b != null) door_yellow_opened_b.SetActive(true);
-            else if (rank == "C" && door_yellow_opened_c != null) door_yellow_opened_c.SetActive(true);
+            if (rank == "A" && door_yellow_opened_a != null)
+            {
+                door_yellow_opened_a.SetActive(true);
+                if (door_yellow_a != null)
+                {
+                    door_yellow_a.SetRank("A");
+                    door_yellow_a.SetInteractable(true);
+                }
+            }
+            else if (rank == "B" && door_yellow_opened_b != null)
+            {
+                door_yellow_opened_b.SetActive(true);
+                if (door_yellow_b != null)
+                {
+                    door_yellow_b.SetRank("B");
+                    door_yellow_b.SetInteractable(true);
+                }
+            }
+            else if (rank == "C" && door_yellow_opened_c != null)
+            {
+                door_yellow_opened_c.SetActive(true);
+                if (door_yellow_c != null)
+                {
+                    door_yellow_c.SetRank("C");
+                    door_yellow_c.SetInteractable(true);
+                }
+            }
         }
     }
 
@@ -175,6 +271,27 @@ public class RoomManager : MonoBehaviour
         if (door_yellow_opened_a != null) door_yellow_opened_a.SetActive(false);
     }
 
+    // 모든 Door 스크립트 상호작용 비활성화
+    private void DeactivateAllDoorScripts()
+    {
+        if (door_cyan_c != null) door_cyan_c.SetInteractable(false);
+        if (door_cyan_b != null) door_cyan_b.SetInteractable(false);
+        if (door_cyan_a != null) door_cyan_a.SetInteractable(false);
+        if (door_magenta_c != null) door_magenta_c.SetInteractable(false);
+        if (door_magenta_b != null) door_magenta_b.SetInteractable(false);
+        if (door_magenta_a != null) door_magenta_a.SetInteractable(false);
+        if (door_yellow_c != null) door_yellow_c.SetInteractable(false);
+        if (door_yellow_b != null) door_yellow_b.SetInteractable(false);
+        if (door_yellow_a != null) door_yellow_a.SetInteractable(false);
+    }
+
+    // 모든 문 잠금 (Door에서 호출, 선택 후 변경 방지)
+    public void LockAllDoors()
+    {
+        DeactivateAllDoorScripts();
+        Debug.Log("[RoomManager] 모든 문 잠금 완료 - 선택 확정!");
+    }
+
     // 외부에서 방 클리어 상태 확인
     public bool IsCleared() => is_cleared;
 
@@ -185,4 +302,14 @@ public class RoomManager : MonoBehaviour
     public string GetCyanRank() => cyan_rank;
     public string GetMagentaRank() => magenta_rank;
     public string GetYellowRank() => yellow_rank;
+
+    // 선택된 문의 등급 저장 (Door에서 호출)
+    public void SetLastSelectedRank(string rank)
+    {
+        last_selected_rank = rank;
+        Debug.Log($"[RoomManager] 선택된 문 등급: {rank}");
+    }
+
+    // 선택된 문의 등급 가져오기 (AbilityCardUI에서 호출)
+    public string GetLastSelectedRank() => last_selected_rank;
 }

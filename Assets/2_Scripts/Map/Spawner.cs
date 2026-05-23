@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
         }
 
         // 첫 스테이지는 무조건 Easy 중 1개 랜덤
-        SpawnTable table = MapSpawnDataLoader.Instance.GetRandomEasySpawn(map_color);
+        MapSpawnTable table = MapSpawnDataLoader.Instance.GetRandomEasySpawn(map_color);
 
         if (table == null)
         {
@@ -42,7 +42,7 @@ public class Spawner : MonoBehaviour
     {
         ClearAllEnemies();
 
-        SpawnTable table = MapSpawnDataLoader.Instance.GetSpawnTable(map_color, difficulty);
+        MapSpawnTable table = MapSpawnDataLoader.Instance.GetSpawnTable(map_color, difficulty);
 
         if (table == null)
         {
@@ -54,9 +54,24 @@ public class Spawner : MonoBehaviour
         has_spawned = true;
     }
 
-    private void SpawnFromTable(SpawnTable table)
+    // MapManager에서 직접 데이터 받기
+    public void SpawnFromMapData(MapSpawnTable table)
     {
-        foreach (SpawnInfo spawn_info in table.spawns)
+        ClearAllEnemies();
+        
+        if (table == null)
+        {
+            Debug.LogError("Spawner: 맵 데이터가 null입니다!");
+            return;
+        }
+
+        SpawnFromTable(table);
+        has_spawned = true;
+    }
+
+    private void SpawnFromTable(MapSpawnTable table)
+    {
+        foreach (EnemySpawnInfo spawn_info in table.spawns)
         {
             // min_count와 max_count 사이에서 랜덤하게 스폰
             int count = Random.Range(spawn_info.min_count, spawn_info.max_count + 1);

@@ -3,7 +3,8 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     [Header("타겟 설정")]
-    [SerializeField] private Transform target; // 플레이어
+    [SerializeField] private Transform target; // 플레이어 (옵션)
+    private Player player;
 
     [Header("카메라 설정")]
     [SerializeField] private float smooth_speed = 5f; // 부드러운 이동 속도
@@ -16,9 +17,44 @@ public class FollowCamera : MonoBehaviour
     [SerializeField] private float min_y = -5f;
     [SerializeField] private float max_y = 5f;
 
+    void Start()
+    {
+        FindPlayer();
+    }
+
+    private void FindPlayer()
+    {
+        // target이 비어있으면 Player 태그로 찾기
+        if (target == null)
+        {
+            GameObject player_obj = GameObject.FindGameObjectWithTag("Player");
+            if (player_obj != null)
+            {
+                target = player_obj.transform;
+                Debug.Log("[FollowCamera] Player를 자동으로 찾았습니다.");
+            }
+            else
+            {
+                Debug.LogWarning("[FollowCamera] Player를 찾을 수 없습니다! Player 태그를 확인하세요.");
+                return;
+            }
+        }
+
+        // Player 컴포넌트 가져오기
+        if (target != null)
+        {
+            player = target.GetComponent<Player>();
+        }
+    }
+
     private void FixedUpdate()
     {
-        if (target == null) return;
+        // target이 없으면 다시 찾기 시도
+        if (target == null)
+        {
+            FindPlayer();
+            return;
+        }
 
         // 목표 위치 = 타겟 위치 + 오프셋
         Vector3 desired_position = target.position + offset;
@@ -43,6 +79,10 @@ public class FollowCamera : MonoBehaviour
     public void SetTarget(Transform new_target)
     {
         target = new_target;
+        if (target != null)
+        {
+            player = target.GetComponent<Player>();
+        }
     }
 
     // 기즈모로 경계 표시 (씬 뷰에서 확인용)
