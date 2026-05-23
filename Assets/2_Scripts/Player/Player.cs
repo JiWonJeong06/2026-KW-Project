@@ -3,6 +3,9 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("UI")]
+    [SerializeField] private GameObject f_key_prompt; // F키 상호작용 스프라이트
+
     private PlayerData playerData;
     private Rigidbody2D rb;
     private Weapon weapon;
@@ -34,6 +37,12 @@ public class Player : MonoBehaviour
         }
 
         current_hp = playerData.hp;
+
+        // F키 프롬프트 초기화
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(false);
+        }
     }
 
     private void Update()
@@ -162,4 +171,21 @@ public class Player : MonoBehaviour
     public float GetMaxHp() => playerData?.hp ?? 0;
     public Vector2 GetCurrentDirection() => current_direction;
     public bool IsAlive() => is_alive;
+
+    // F키 프롬프트 표시/숨김
+    public void ShowFKeyPrompt()
+    {
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(true);
+        }
+    }
+
+    public void HideFKeyPrompt()
+    {
+        if (f_key_prompt != null)
+        {
+            f_key_prompt.SetActive(false);
+        }
+    }
 }

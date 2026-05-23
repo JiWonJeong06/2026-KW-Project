@@ -283,6 +283,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cyan
       objectReference: {fileID: 0}
+    - target: {fileID: 6161233257370237325, guid: 005a0707796916a4b9280180da365016, type: 3}
+      propertyPath: on_room_clear.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6161233257370237325, guid: 005a0707796916a4b9280180da365016, type: 3}
+      propertyPath: on_room_clear.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7121382356342757772, guid: 005a0707796916a4b9280180da365016, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -414,7 +422,7 @@ GameObject:
   - component: {fileID: 556642383}
   - component: {fileID: 556642384}
   m_Layer: 0
-  m_Name: EnemyLoader (1)
+  m_Name: MapSpawnLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
