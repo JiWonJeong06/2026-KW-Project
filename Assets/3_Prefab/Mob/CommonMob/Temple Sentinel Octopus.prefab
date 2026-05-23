@@ -103,7 +103,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7144678975709969002}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -202,5 +202,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4aa6392007a3a8a429dc4ef7b78692e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretEnemy
+  enemy_id: 1002
   enemy_bullet_prefab: {fileID: 8928884553671550896, guid: d1a235b146629144a82ef7cafaa74db0, type: 3}
   shoot_point: {fileID: 1124662992320324021}

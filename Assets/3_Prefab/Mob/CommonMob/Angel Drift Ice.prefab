@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -193148766197133722}
   - component: {fileID: -6313055182078540428}
   - component: {fileID: 2511623335888264938}
-  - component: {fileID: 1617685400030032258}
+  - component: {fileID: 2027094439420377669}
   m_Layer: 7
   m_Name: Angel Drift Ice
   m_TagString: Enemy
@@ -181,7 +181,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &1617685400030032258
+--- !u!114 &2027094439420377669
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -193,5 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ff45f2a176e24446b99761b80e2df94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RangedEnemy
+  enemy_id: 1001
+  direction_change_interval: 2
   enemy_bullet_prefab: {fileID: 8928884553671550896, guid: d1a235b146629144a82ef7cafaa74db0, type: 3}
   shoot_point: {fileID: 1794649055604642110}
