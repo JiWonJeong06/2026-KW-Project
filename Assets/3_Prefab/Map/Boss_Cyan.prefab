@@ -377,7 +377,7 @@ GameObject:
   - component: {fileID: 7121382356342757772}
   - component: {fileID: 6161233257370237325}
   m_Layer: 12
-  m_Name: Cyan
+  m_Name: Boss_Cyan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -435,7 +435,7 @@ MonoBehaviour:
   door_yellow_c: {fileID: 6962464066050577494}
   door_yellow_b: {fileID: 6969962799747140798}
   door_yellow_a: {fileID: 8484468665469990601}
-  is_boss_room: 0
+  is_boss_room: 1
   on_room_clear:
     m_PersistentCalls:
       m_Calls: []

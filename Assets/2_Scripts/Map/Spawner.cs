@@ -21,10 +21,10 @@ public class Spawner : MonoBehaviour
     {
         if (has_spawned)
         {
-            Debug.LogWarning("Spawner: 이미 적이 스폰되었습니다.");
+         
             return;
         }
-
+        
         // 첫 스테이지는 무조건 Easy 중 1개 랜덤
         MapSpawnTable table = MapSpawnDataLoader.Instance.GetRandomEasySpawn(map_color);
 

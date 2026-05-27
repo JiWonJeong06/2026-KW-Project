@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject cyan_weapon;    // Cyan 무기 외형
     [SerializeField] private GameObject magenta_weapon; // Magenta 무기 외형
     [SerializeField] private GameObject yellow_weapon;  // Yellow 무기 외형
+
+    [Header("Invincibility Settings")]
+    [SerializeField] private float invincibility_duration = 2f; // 무적 시간
+    [SerializeField] private float blink_interval = 0.5f;       // 깜빡임 간격
 
     private PlayerData playerData;
     private Rigidbody2D rb;
@@ -22,6 +27,7 @@ public class Player : MonoBehaviour
 
     private float current_hp;
     private bool is_alive = true;
+    private bool is_invincible = false; // 무적 상태
 
     private void Awake()
     {
@@ -150,11 +156,50 @@ public class Player : MonoBehaviour
     {
         if (!is_alive) return;
 
+        // 무적 상태면 데미지 무시
+        if (is_invincible)
+        {
+            Debug.Log("[Player] 무적 상태 - 데미지 무시");
+            return;
+        }
+
         current_hp -= damage;
         Debug.Log($"플레이어 피해: {damage}, 남은 체력: {current_hp}");
 
+        // 무적 시작
+        StartCoroutine(InvincibilityCoroutine());
+
         if (current_hp <= 0)
             Die();
+    }
+
+    private IEnumerator InvincibilityCoroutine()
+    {
+        is_invincible = true;
+        float elapsed = 0f;
+
+        // 원래 색상 저장
+        Color original_color = spriteRenderer.color;
+
+        // 무적 시간 동안 깜빡임
+        while (elapsed < invincibility_duration)
+        {
+            // 투명하게 (Alpha 0.3)
+            spriteRenderer.color = new Color(original_color.r, original_color.g, original_color.b, 0.1f);
+            yield return new WaitForSeconds(blink_interval);
+
+            // 불투명하게 (Alpha 1.0)
+            spriteRenderer.color = original_color;
+            yield return new WaitForSeconds(blink_interval);
+
+            elapsed += blink_interval * 2;
+        }
+
+        // 무적 종료 - 원래 색상으로 복구
+        spriteRenderer.color = original_color;
+        is_invincible = false;
+
+        Debug.Log("[Player] 무적 종료");
     }
 
     public void Heal(float amount)
@@ -170,6 +215,17 @@ public class Player : MonoBehaviour
         is_alive = false;
         animator.SetBool("isWalk", false);
         animator.SetBool("isAttack", false);
+        
+        // 무적 Coroutine 중지
+        StopAllCoroutines();
+        
+        // 색상 복구
+        if (spriteRenderer != null)
+        {
+            Color original_color = spriteRenderer.color;
+            spriteRenderer.color = new Color(original_color.r, original_color.g, original_color.b, 1f);
+        }
+
         Debug.Log("플레이어 사망");
         gameObject.SetActive(false);
     }
@@ -179,6 +235,7 @@ public class Player : MonoBehaviour
     public float GetMaxHp() => playerData?.hp ?? 0;
     public Vector2 GetCurrentDirection() => current_direction;
     public bool IsAlive() => is_alive;
+    public bool IsInvincible() => is_invincible; // 무적 상태 확인
 
     // F키 프롬프트 표시/숨김
     public void ShowFKeyPrompt()
