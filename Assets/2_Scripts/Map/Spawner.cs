@@ -12,20 +12,15 @@ public class Spawner : MonoBehaviour
     [SerializeField] private GameObject ranged_enemy_prefab;
     [SerializeField] private GameObject turret_enemy_prefab;
     [SerializeField] private GameObject bomb_enemy_prefab;
-    [SerializeField] private GameObject boss_prefab; // 보스 프리팹
+    [SerializeField] private GameObject boss_prefab;
 
     private List<Enemy> spawned_enemies = new List<Enemy>();
     private bool has_spawned = false;
 
     public void SpawnEnemies()
     {
-        if (has_spawned)
-        {
-         
-            return;
-        }
+        if (has_spawned) return;
         
-        // 첫 스테이지는 무조건 Easy 중 1개 랜덤
         MapSpawnTable table = MapSpawnDataLoader.Instance.GetRandomEasySpawn(map_color);
 
         if (table == null)
@@ -54,7 +49,6 @@ public class Spawner : MonoBehaviour
         has_spawned = true;
     }
 
-    // MapManager에서 직접 데이터 받기
     public void SpawnFromMapData(MapSpawnTable table)
     {
         ClearAllEnemies();
@@ -69,17 +63,40 @@ public class Spawner : MonoBehaviour
         has_spawned = true;
     }
 
+    /// <summary>
+    /// 8라운드 전용 — (0, 0, 0)에 보스 소환
+    /// RoomManager 또는 MapManager에서 라운드 == 8 일 때 호출
+    /// </summary>
+    public void SpawnBoss()
+    {
+        if (boss_prefab == null)
+        {
+            Debug.LogError("[Spawner] boss_prefab 미할당!");
+            return;
+        }
+
+        ClearAllEnemies();
+
+        GameObject boss_obj = Instantiate(boss_prefab, Vector3.zero, Quaternion.identity);
+
+        Enemy boss = boss_obj.GetComponent<Enemy>();
+        if (boss != null)
+        {
+            boss.Initialize(9001);
+            spawned_enemies.Add(boss);
+        }
+
+        has_spawned = true;
+        Debug.Log("[Spawner] 8라운드 보스 소환! pos=(0,0,0)");
+    }
+
     private void SpawnFromTable(MapSpawnTable table)
     {
         foreach (EnemySpawnInfo spawn_info in table.spawns)
         {
-            // min_count와 max_count 사이에서 랜덤하게 스폰
             int count = Random.Range(spawn_info.min_count, spawn_info.max_count + 1);
-
             for (int i = 0; i < count; i++)
-            {
                 SpawnEnemy(spawn_info.enemy_id);
-            }
         }
 
         Debug.Log($"적 스폰 완료: {table.color} {table.difficulty}, 총 {spawned_enemies.Count}마리");
@@ -113,10 +130,10 @@ public class Spawner : MonoBehaviour
             case 1001: return ranged_enemy_prefab;
             case 1002: return turret_enemy_prefab;
             case 1003: return bomb_enemy_prefab;
-            case 9001: return boss_prefab; // Cyan Boss
-            case 9002: return boss_prefab; // Magenta Boss (차후)
-            case 9003: return boss_prefab; // Yellow Boss (차후)
-            default: return null;
+            case 9001: return boss_prefab;
+            case 9002: return boss_prefab;
+            case 9003: return boss_prefab;
+            default:   return null;
         }
     }
 
@@ -135,9 +152,7 @@ public class Spawner : MonoBehaviour
         foreach (Enemy enemy in spawned_enemies)
         {
             if (enemy != null)
-            {
                 Destroy(enemy.gameObject);
-            }
         }
 
         spawned_enemies.Clear();
@@ -153,7 +168,6 @@ public class Spawner : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Vector3 center = spawn_area_center != null ? spawn_area_center.position : transform.position;
-
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireCube(center, new Vector3(spawn_area_size.x, spawn_area_size.y, 0f));
     }

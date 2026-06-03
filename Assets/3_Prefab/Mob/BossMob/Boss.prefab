@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8339792069011863626}
   - component: {fileID: 4989136453340585076}
   - component: {fileID: 347102981538286259}
+  - component: {fileID: 6698477991445345015}
   m_Layer: 7
   m_Name: Boss
   m_TagString: Enemy
@@ -82,9 +83,9 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1862189753
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -6316099342555254985, guid: a5ea36e2b1c2c354091f16ba08e2660e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,24 +108,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Boss
   enemy_id: 9001
-  orbit_bullet_prefab: {fileID: 8928884553671550896, guid: d27cc551a93bb75488769f5240ee354f, type: 3}
   bullet_prefab: {fileID: 8928884553671550896, guid: d1a235b146629144a82ef7cafaa74db0, type: 3}
   water_drop_prefab: {fileID: 6764040760279220749, guid: 56cd40ce4539ef3429dce80df7990c0f, type: 3}
   danger_zone_prefab: {fileID: 1380774883409878036, guid: 0389845b6866d374fa7fc133e1720adb, type: 3}
-  wave_horizontal_prefab: {fileID: 2737686892971027578, guid: 50cdba359698b75478f46f025cb6ce45, type: 3}
-  wave_vertical_prefab: {fileID: 2737686892971027578, guid: dec58014ee22c1f4f82706cb3d91914e, type: 3}
+  pattern_delay: 2.5
+  aim_shot_interval: 4
+  orbit_bullet_prefab: {fileID: 8928884553671550896, guid: d27cc551a93bb75488769f5240ee354f, type: 3}
+  wave_prefab: {fileID: 2737686892971027578, guid: 50cdba359698b75478f46f025cb6ce45, type: 3}
+  orbit_radius: 2
   orbit_radius_min: 1.5
-  orbit_radius_max: 3
-  orbit_radius_speed: 0.5
-  rain_danger_duration: 1.5
-  rain_drop_interval: 0.08
-  rain_drop_count: 12
-  rain_area_size: 3
-  rain_cooldown: 6
-  wave_cooldown: 8
+  orbit_radius_max: 3.5
+  orbit_cycle: 8
+  orbit_speed: 90
+  wave_cooldown: 10
+  wave_spawn_inset: 3
+  wave_area_width: 20
+  enemy_prefabs:
+  - {fileID: 8530008439858308169, guid: a748eb18792c49c4d8487c3085ab2e9d, type: 3}
+  - {fileID: 7144678975709969002, guid: f68f215da48b1a44a818f8a6b30e4ceb, type: 3}
+  - {fileID: 262109277558788056, guid: 540af9552a81e114c91a951ba297fff3, type: 3}
   spawn_area_width: 20
   spawn_area_height: 10
   boss_no_spawn_radius: 4
+  rain_danger_duration: 3
+  rain_drop_count: 8
+  rain_total_duration: 3
+  rain_area_size: 1.5
+  rain_spawn_height: 3
+  rain_cooldown: 1.25
 --- !u!50 &4989136453340585076
 Rigidbody2D:
   serializedVersion: 5
@@ -186,6 +197,28 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.0059711933}
-  m_Size: {x: 1, y: 1.991209}
+  m_Offset: {x: -0.20194882, y: -0.09180766}
+  m_Size: {x: 1.4702913, y: 1.4702913}
   m_Direction: 0
+--- !u!95 &6698477991445345015
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6706717549175747680}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ff6dac2cbdf4b54ca919b8eda22717a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

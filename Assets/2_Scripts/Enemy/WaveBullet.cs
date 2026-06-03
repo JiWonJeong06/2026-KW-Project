@@ -1,8 +1,8 @@
 using UnityEngine;
 
 /// <summary>
-/// 보스 파도 패턴 - 가로/세로 프리팹에 붙이는 컴포넌트
-/// 한 방향으로 이동하다가 화면을 벗어나면 자동 삭제
+/// 보스 파도 패턴 - 가로 프리팹에 붙이는 컴포넌트
+/// 한 방향으로 이동하다가 최대 거리 초과 시 자동 삭제
 /// </summary>
 public class WaveBullet : MonoBehaviour
 {
@@ -26,12 +26,6 @@ public class WaveBullet : MonoBehaviour
         move_direction = direction.normalized;
         move_speed     = speed;
         damage         = dmg;
-
-        // 방향에 따라 스프라이트 회전 (가로 파도: 기본, 세로 파도: 90도)
-        if (Mathf.Abs(move_direction.y) > Mathf.Abs(move_direction.x))
-        {
-            transform.rotation = Quaternion.Euler(0f, 0f, 90f);
-        }
 
         // 왼쪽 방향이면 X 반전
         if (move_direction.x < 0)
