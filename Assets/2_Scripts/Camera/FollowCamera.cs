@@ -33,11 +33,6 @@ public class FollowCamera : MonoBehaviour
                 target = player_obj.transform;
                 Debug.Log("[FollowCamera] Player를 자동으로 찾았습니다.");
             }
-            else
-            {
-                Debug.LogWarning("[FollowCamera] Player를 찾을 수 없습니다! Player 태그를 확인하세요.");
-                return;
-            }
         }
 
         // Player 컴포넌트 가져오기

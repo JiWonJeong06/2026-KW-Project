@@ -77,6 +77,7 @@ public abstract class Enemy : MonoBehaviour
         // 안전지대 안의 플레이어는 감지하지 못함
         if (SafeZone.Instance != null && SafeZone.Instance.IsPlayerInside())
         {
+            is_detected = false; // 감지 상태 즉시 해제
             return;
         }
 

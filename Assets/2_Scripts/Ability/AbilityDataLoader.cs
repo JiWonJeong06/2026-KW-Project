@@ -62,12 +62,12 @@ public class AbilityDataLoader : MonoBehaviour
         Debug.Log($"증강 데이터 로드 완료: {all_abilities.Count}개");
     }
 
-    // 등급별 증강 가져오기 (중복 제거)
+    // 등급별 증강 가져오기 (중복 허용)
     public List<AbilityItem> GetAbilitiesByRank(string rank, int count = 3)
     {
-        // 해당 등급의 증강 중 선택되지 않은 것만 필터링
+        // 해당 등급의 증강 필터링 (중복 허용)
         List<AbilityItem> available = all_abilities
-            .Where(a => a.rank == rank && !selected_ability_numbers.Contains(a.number))
+            .Where(a => a.rank == rank)
             .ToList();
 
         if (available.Count < count)
@@ -75,7 +75,7 @@ public class AbilityDataLoader : MonoBehaviour
             Debug.LogWarning($"{rank}등급 증강이 {count}개 미만입니다. (남은 개수: {available.Count})");
         }
 
-        // 랜덤으로 count개 선택
+        // 랜덤으로 count개 선택 (중복 가능)
         List<AbilityItem> selected = available.OrderBy(x => Random.value).Take(count).ToList();
         return selected;
     }
@@ -101,11 +101,10 @@ public class AbilityDataLoader : MonoBehaviour
             allowed_ranks.Add("C");
         }
 
-        // 허용된 등급 + 해당 type의 증강 중 선택되지 않은 것만 필터링
+        // 허용된 등급 + 해당 type의 증강 필터링 (중복 허용)
         List<AbilityItem> available = all_abilities
             .Where(a => allowed_ranks.Contains(a.rank) 
-                     && a.type == type  // ⭐ 색깔 필터링 추가
-                     && !selected_ability_numbers.Contains(a.number))
+                     && a.type == type)
             .ToList();
 
         if (available.Count < count)
@@ -113,7 +112,7 @@ public class AbilityDataLoader : MonoBehaviour
             Debug.LogWarning($"{type} {rank}등급(하위 포함) 증강이 {count}개 미만입니다. (남은 개수: {available.Count})");
         }
 
-        // 랜덤으로 count개 선택
+        // 랜덤으로 count개 선택 (중복 가능)
         List<AbilityItem> selected = available.OrderBy(x => Random.value).Take(count).ToList();
         
         Debug.Log($"[AbilityDataLoader] {type} {rank}등급 증강 선택: {string.Join(", ", selected.Select(a => $"{a.name}({a.rank}, {a.number})"))}");

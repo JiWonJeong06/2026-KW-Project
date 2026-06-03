@@ -2888,7 +2888,7 @@ Transform:
   m_GameObject: {fileID: 4788528447919674159}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2908,7 +2908,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Spawner
   map_color: Cyan
   spawn_area_center: {fileID: 6742680348855792768}
-  spawn_area_size: {x: 20, y: 7.5}
+  spawn_area_size: {x: 19, y: 6.5}
   ranged_enemy_prefab: {fileID: 8530008439858308169, guid: a748eb18792c49c4d8487c3085ab2e9d, type: 3}
   turret_enemy_prefab: {fileID: 7144678975709969002, guid: f68f215da48b1a44a818f8a6b30e4ceb, type: 3}
   bomb_enemy_prefab: {fileID: 262109277558788056, guid: 540af9552a81e114c91a951ba297fff3, type: 3}
