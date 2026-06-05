@@ -371,7 +371,7 @@ public class Boss : Enemy
                                  Quaternion.identity);
 
             // 가로로 길쭉하게 (맵 전체 너비 × 높이 1)
-            danger.transform.localScale = new Vector3(wave_area_width, 3f, 1f);
+            danger.transform.localScale = new Vector3(wave_area_width, 1f, 1f);
             Debug.Log($"[Boss] 파도 DangerZone 표시: y={y}");
         }
 
@@ -465,6 +465,10 @@ public class Boss : Enemy
     public override void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
+
+        // ── 보스 피격 사운드 ──
+        SoundManager.Instance?.PlayBossHit();
+
         if (BossHealthBar.Instance != null)
             BossHealthBar.Instance.UpdateHealthBar(current_hp, enemy_data.hp);
     }
@@ -473,7 +477,15 @@ public class Boss : Enemy
     {
         if (BossHealthBar.Instance != null)
             BossHealthBar.Instance.HideBossHealthBar();
+
+        // ── 보스 사망 사운드 ──
+        SoundManager.Instance?.PlayBossDeath();
+
         Debug.Log("[Boss] 보스 처치!");
+
+        // ── 승리 결산창 ──
+        ResultUI.Instance?.ShowWin();
+
         base.Die();
     }
 }

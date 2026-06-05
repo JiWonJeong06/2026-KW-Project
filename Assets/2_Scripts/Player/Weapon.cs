@@ -24,11 +24,10 @@ public class Weapon : MonoBehaviour
     [SerializeField] private Sprite yellow_sprite_right;
 
     private float last_shoot_time = 0f;
-    [SerializeField] private string current_weapon_type = "Cyan"; // 현재 무기 타입 (기본값: Cyan)
+    [SerializeField] private string current_weapon_type = "Cyan";
 
     public void Shoot(Vector2 direction)
     {
-        // PlayerStats에서 현재 공격속도 가져오기
         float shoot_cooldown = 1f / PlayerStats.Instance.current_atk_speed;
 
         if (Time.time - last_shoot_time < shoot_cooldown)
@@ -40,10 +39,13 @@ public class Weapon : MonoBehaviour
             return;
         }
 
+        // ── 쿨타임 통과 → 실제 발사 시에만 사운드 ──
+        SoundManager.Instance?.PlayPlayerAttack();
+
         // 기본 총알 1발
         CreateProjectile(direction);
 
-        // 추가 총알 (current_bullet_count - 1)
+        // 추가 총알
         for (int i = 0; i < PlayerStats.Instance.current_bullet_count - 1; i++)
         {
             CreateProjectile(direction);
@@ -60,7 +62,6 @@ public class Weapon : MonoBehaviour
         Projectile projectile = projectile_obj.GetComponent<Projectile>();
         if (projectile != null)
         {
-            // PlayerStats에서 현재 스탯 가져오기
             projectile.Initialize(
                 direction,
                 PlayerStats.Instance.current_bullet_speed,
@@ -75,7 +76,6 @@ public class Weapon : MonoBehaviour
 
     private Sprite GetDirectionSprite(Vector2 direction)
     {
-        // 현재 무기 타입에 따라 스프라이트 선택
         if (current_weapon_type == "Cyan")
         {
             if (direction == Vector2.up)    return cyan_sprite_up;
@@ -101,18 +101,16 @@ public class Weapon : MonoBehaviour
         return null;
     }
 
-    // 무기 타입 설정 (Player에서 호출)
     public void SetWeaponType(string weapon_type)
     {
         current_weapon_type = weapon_type;
         Debug.Log($"[Weapon] 무기 타입 변경: {weapon_type}");
     }
 
-    // PlayerStats에서 값 가져오기
     public float GetAttackDamage() => PlayerStats.Instance.current_atk;
-    public float GetAttackSpeed() => PlayerStats.Instance.current_atk_speed;
-    public float GetBulletSpeed() => PlayerStats.Instance.current_bullet_speed;
-    public float GetRange() => PlayerStats.Instance.current_range;
-    public bool HasPierce() => PlayerStats.Instance.has_pierce;
-    public bool HasBleed() => PlayerStats.Instance.has_bleed;
+    public float GetAttackSpeed()  => PlayerStats.Instance.current_atk_speed;
+    public float GetBulletSpeed()  => PlayerStats.Instance.current_bullet_speed;
+    public float GetRange()        => PlayerStats.Instance.current_range;
+    public bool  HasPierce()       => PlayerStats.Instance.has_pierce;
+    public bool  HasBleed()        => PlayerStats.Instance.has_bleed;
 }

@@ -14,6 +14,7 @@ public class SceneController : MonoBehaviour
     public const string SCENE_TITLE   = "0_Start";
     public const string SCENE_LOADING = "99_Loading";
     public const string SCENE_INGAME  = "2_InGame";
+    public const string SCENE_INGAME2 = "3_InGame";
 
     // 로딩 씬에서 읽어갈 다음 씬 이름
     public static string next_scene { get; private set; }
@@ -36,6 +37,12 @@ public class SceneController : MonoBehaviour
     {
         next_scene = target_scene;
         SceneManager.LoadScene(SCENE_LOADING);
+    }
+
+    /// <summary>다음 챕터 (3_InGame)로</summary>
+    public void LoadNextChapter()
+    {
+        LoadWithLoading(SCENE_INGAME2);
     }
 
     /// <summary>타이틀로 바로 이동</summary>

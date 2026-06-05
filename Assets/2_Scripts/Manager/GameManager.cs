@@ -15,15 +15,14 @@ public class GameManager : MonoBehaviour
     [Header("플레이어")]
     [SerializeField] private GameObject player_prefab;
 
-    [Header("페이드 효과")]
-    [SerializeField] private FadeController fade_controller;
+
 
     private int    current_stage      = 1;
     private string current_difficulty = "Easy";
     private GameObject current_map      = null;
     private GameObject player_instance  = null;
 
-    private bool is_game_started = false; // 인게임 씬 진입 여부
+
 
     private void Awake()
     {
@@ -34,6 +33,8 @@ public class GameManager : MonoBehaviour
 
             // 씬 전환 감지 — 2_InGame 씬 진입 시 자동 초기화
             SceneManager.sceneLoaded += OnSceneLoaded;
+
+
         }
         else
         {
@@ -76,15 +77,23 @@ public class GameManager : MonoBehaviour
             SoundManager.Instance.PlayBGM_Stage();
     }
 
+    // 디버그용 — 빌드에서도 유지
+    private Collider2D player_collider = null;
+    private bool      debug_no_clip    = false;
+
     private void Update()
     {
-#if UNITY_EDITOR
-        if (Keyboard.current.f1Key.wasPressedThisFrame)
+        var keyboard = Keyboard.current;
+
+        // F1 — 씬의 모든 Enemy 제거
+        if (keyboard.f1Key.wasPressedThisFrame)
             DebugKillAllEnemies();
-#endif
+
+        // F2 — 플레이어 Collider 무효 / 복원 토글
+        if (keyboard.f2Key.wasPressedThisFrame)
+            DebugTogglePlayerCollider();
     }
 
-#if UNITY_EDITOR
     private void DebugKillAllEnemies()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -92,7 +101,21 @@ public class GameManager : MonoBehaviour
         foreach (var e in enemies) Destroy(e);
         Debug.Log($"[DEBUG] F1 — {enemies.Length}개 제거");
     }
-#endif
+
+    private void DebugTogglePlayerCollider()
+    {
+        if (player_instance == null) return;
+
+        if (player_collider == null)
+            player_collider = player_instance.GetComponent<Collider2D>();
+
+        if (player_collider == null) return;
+
+        debug_no_clip = !debug_no_clip;
+        player_collider.enabled = !debug_no_clip;
+
+        Debug.Log($"[DEBUG] F2 — 플레이어 Collider {(debug_no_clip ? "비활성화 (무적)" : "활성화 (복원)")}");
+    }
 
     // ─────────────────────────────────────────
     // 플레이어 생성
@@ -124,9 +147,10 @@ public class GameManager : MonoBehaviour
     {
         current_stage++;
 
-        if (current_stage > 8)
+        if (current_stage > 3)
         {
             Debug.Log("[GameManager] 게임 클리어!");
+            ResultUI.Instance?.ShowWin();
             return;
         }
 
@@ -143,8 +167,8 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"[GameManager] Stage {stage} 로드 (난이도: {difficulty})");
 
-        if (fade_controller != null)
-            yield return fade_controller.FadeOut();
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeOut();
 
         if (current_map != null)
         {
@@ -152,15 +176,15 @@ public class GameManager : MonoBehaviour
             current_map = null;
         }
 
-        if (stage <= 7)
+        if (stage <= 2)
             CreateNormalMap(difficulty);
-        else if (stage == 8)
+        else if (stage == 3)
             CreateBossMap();
 
         MovePlayerToStartPosition();
 
-        if (fade_controller != null)
-            yield return fade_controller.FadeIn();
+        if (FadeController.Instance != null)
+            yield return FadeController.Instance.FadeIn();
 
         Debug.Log($"[GameManager] Stage {stage} 로드 완료");
     }
@@ -201,4 +225,42 @@ public class GameManager : MonoBehaviour
 
     public int    GetCurrentStage()      => current_stage;
     public string GetCurrentDifficulty() => current_difficulty;
+
+    /// <summary>
+    /// 게임 완전 초기화 — 타이틀/다시하기 시 호출
+    /// 플레이어, 맵, 스테이지, 라운드 전부 리셋
+    /// </summary>
+    public void ResetGame()
+    {
+        // 현재 맵 제거
+        if (current_map != null)
+        {
+            Destroy(current_map);
+            current_map = null;
+        }
+
+        // 플레이어 제거 (재생성을 위해)
+        if (player_instance != null)
+        {
+            Destroy(player_instance);
+            player_instance = null;
+        }
+
+        // 스테이지 초기화
+        current_stage      = 1;
+        current_difficulty = "Easy";
+
+        // 라운드 초기화
+        RoomManager.ResetRound();
+
+        // PlayerStats 초기화
+        if (PlayerStats.Instance != null)
+            PlayerStats.Instance.ResetStats();
+
+        // 디버그 상태 초기화
+        debug_no_clip   = false;
+        player_collider = null;
+
+        Debug.Log("[GameManager] 게임 완전 초기화 완료");
+    }
 }

@@ -40,7 +40,7 @@
       "atk": 1.0,
       "atk_speed": 1.0,
       "bullet_speed": 3.0,
-      "hp": 60.0,
+      "hp": 15.0,
       "move_speed": 0.0,
       "range": 999.0
     }
