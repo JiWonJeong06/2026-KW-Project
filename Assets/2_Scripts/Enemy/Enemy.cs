@@ -132,6 +132,9 @@ public abstract class Enemy : MonoBehaviour
         current_hp -= damage;
         Debug.Log($"{enemy_data.name} 피해: {damage}, 남은 체력: {current_hp}");
 
+        // ── 적 피격 사운드 ──
+        SoundManager.Instance?.PlayEnemyHit();
+
         if (current_hp <= 0)
         {
             Die();

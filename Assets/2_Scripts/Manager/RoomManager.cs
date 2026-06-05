@@ -73,7 +73,7 @@ public class RoomManager : MonoBehaviour
         Debug.Log($"[RoomManager] 현재 라운드: {current_round}");
 
         // 8라운드면 보스방으로 설정
-        if (current_round == 8)
+        if (current_round == 3)
         {
             is_boss_room = true;
             Debug.Log("[RoomManager] 8라운드 — 보스방!");
@@ -95,7 +95,7 @@ public class RoomManager : MonoBehaviour
         CloseDoors();
 
         // 8라운드: 보스 소환
-        if (current_round == 8)
+        if (current_round == 3)
         {
             spawner.SpawnBoss();
             Debug.Log("[RoomManager] 8라운드 — 보스 소환!");
@@ -227,6 +227,14 @@ public class RoomManager : MonoBehaviour
     {
         DeactivateAllDoorScripts();
         Debug.Log("[RoomManager] 모든 문 잠금 완료");
+    }
+
+    /// <summary>보스 처치 시 외부에서 직접 클리어 호출</summary>
+    public void ClearBossRoom()
+    {
+        if (is_cleared) return;
+        Debug.Log("[RoomManager] 보스방 클리어!");
+        OnRoomClear();
     }
 
     public bool IsCleared()              => is_cleared;

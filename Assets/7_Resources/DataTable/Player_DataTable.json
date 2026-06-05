@@ -2,13 +2,13 @@
   "name": "Mycka",
   "korean_name": "미카",
   "japanese_name": "ミカ",
-  "atk": 1.0,
-  "range": 3.0,
+  "atk": 1.5,
+  "range": 4.0,
   "atk_speed": 1.0,
-  "bullet_speed": 4.5,
+  "bullet_speed": 5.5,
   "add_bullet": 0,
   "hp": 5.0,
-  "speed": 3.0,
+  "speed": 4.0,
   "bleed": false,
   "pierce": false
 }

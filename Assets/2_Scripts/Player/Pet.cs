@@ -40,7 +40,14 @@ public class Pet : MonoBehaviour
 
     private void Update()
     {
-        if (player == null || pet_data == null) return;
+        if (pet_data == null) return;
+
+        // player가 null이면 매 프레임 다시 찾기
+        if (player == null)
+        {
+            player = FindAnyObjectByType<Player>();
+            if (player == null) return;
+        }
 
         FollowPlayer();
         DetectEnemy();

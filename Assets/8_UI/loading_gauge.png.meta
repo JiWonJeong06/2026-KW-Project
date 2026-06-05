@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c3b68022f4fe92444bb3aa5866408641
+guid: 011f727109d978041b344038a37f7ec1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4484218569625598909
-    second: volume_gauge_0
+      213: -7414332109012711050
+    second: loading_gauge_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: volume_gauge_0
+      name: loading_gauge_0
       rect:
         serializedVersion: 2
-        x: 41
-        y: 11
-        width: 320
-        height: 26
+        x: 11
+        y: 17
+        width: 380
+        height: 14
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dbb7eb9d7052b3e30800000000000000
-      internalID: 4484218569625598909
+      spriteID: 679468bca300b1990800000000000000
+      internalID: -7414332109012711050
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      volume_gauge_0: 4484218569625598909
+      loading_gauge_0: -7414332109012711050
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

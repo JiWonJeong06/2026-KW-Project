@@ -7,7 +7,7 @@ public class PetSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject pet_prefab;  // 펫 프리팹
 
-    private void Start()
+    private void Awake()
     {
         SpawnPet();
     }
